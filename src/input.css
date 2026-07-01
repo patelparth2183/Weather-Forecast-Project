@@ -1,0 +1,5 @@
+@import "tailwindcss";
+
+.bg-glass {
+    @apply bg-[#ffffff1f] backdrop-blur-lg border border-[#ffffff38];
+}

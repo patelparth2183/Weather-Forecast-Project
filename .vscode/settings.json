@@ -1,0 +1,6 @@
+{
+    "liveServer.settings.port": 5501,
+    "css.lint.propertyIgnoredDueToDisplay": "ignore",
+    "less.lint.propertyIgnoredDueToDisplay": "ignore",
+    "scss.lint.propertyIgnoredDueToDisplay": "ignore"
+}
