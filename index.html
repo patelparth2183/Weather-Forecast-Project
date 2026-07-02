@@ -8,8 +8,89 @@
     <link rel="stylesheet" href="src/output.css">
 </head>
 <body class="min-h-screen bg-linear-to-br from-slate-900 via-blue-950 to-indigo-900 text-white font-sans antialiased">
-    <header class="bg-glass sticky top-0 z-50 px-4 py-3">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="cloud-sun" aria-hidden="true" class="lucide lucide-cloud-sun w-6 h-6 text-white"><path d="M12 2v2"></path><path d="m4.93 4.93 1.41 1.41"></path><path d="M20 12h2"></path><path d="m19.07 4.93-1.41 1.41"></path><path d="M15.947 12.65a4 4 0 0 0-5.925-4.128"></path><path d="M13 22H7a5 5 0 1 1 4.9-6H13a3 3 0 0 1 0 6Z"></path></svg>
+
+    <!-- ===================== HEADER ===================== -->
+    <header class="bg-glass sticky top-0 z-50 py-3 px-3">
+        <div class="container">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center gap-x-2.5">
+                    <div class="w-10 h-10 flex items-center justify-center p-1.25 bg-sky-500 rounded-xl">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="cloud-sun" aria-hidden="true" class="lucide lucide-cloud-sun w-6 h-6 text-white"><path d="M12 2v2"></path><path d="m4.93 4.93 1.41 1.41"></path><path d="M20 12h2"></path><path d="m19.07 4.93-1.41 1.41"></path><path d="M15.947 12.65a4 4 0 0 0-5.925-4.128"></path><path d="M13 22H7a5 5 0 1 1 4.9-6H13a3 3 0 0 1 0 6Z"></path></svg>
+                    </div>
+                    <div>
+                        <h2 class="text-lg leading-5 text-white font-bold">Weather Forecast</h2>
+                        <p class="text-sky-300 text-[12px] leading-3 mt-0.5">Real-time conditions & 5-day outlook</p>
+                    </div>
+                </div>
+                <div>
+                    <p class="hidden sm:block text-gray-400 text-[12px] italic">Your weather companion</p>
+                </div>
+            </div> 
+        </div>
     </header>
+
+    <!-- ===================== MAIN CONTENT ===================== -->
+    <main class="px-3.75 py-7.5">
+
+        <!-- ===================== SEARCH BOX ===================== -->
+        <section class="mb-7.5">
+            <div class="container">
+				<div class="p-5 rounded-2xl bg-glass shadow-xs flex flex-col gap-4">
+					<div class="flex flex-col gap-3 grow md:flex-row">
+						<div class="relative">
+							<span class="absolute left-3.25 top-3.25">
+								<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="search" aria-hidden="true" class="lucide lucide-search w-4 h-4"><path d="m21 21-4.34-4.34"></path><circle cx="11" cy="11" r="8"></circle></svg>
+							</span>
+							<input type="text" id="citySearch" placeholder="Search for a city..." class="w-full py-2.5 pr-3.75 pl-10 text-sm leading-5 border border-white/20 rounded-[10px] focus:outline-0">
+						</div>
+						<button type="button" class="flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl bg-sky-500 hover:bg-sky-400 active:scale-95 transition-all font-semibold text-sm shadow-lg shadow-sky-500/30">Search</button>
+						<button type="button" class="flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl bg-glass border border-white/20 hover:bg-white/15 active:scale-95 transition-all font-semibold text-sm">
+							<svg xmlns="http://www.w3.org/2000/svg" fill="#00d492" height="16px" width="16px" viewBox="0 0 368.553 368.553"><path d="M184.277,0c-71.683,0-130,58.317-130,130c0,87.26,119.188,229.855,124.263,235.883c1.417,1.685,3.504,2.66,5.705,2.67 c0.011,0,0.021,0,0.032,0c2.189,0,4.271-0.957,5.696-2.621c5.075-5.926,124.304-146.165,124.304-235.932 C314.276,58.317,255.96,0,184.277,0z M184.322,349.251C160.385,319.48,69.277,201.453,69.277,130c0-63.411,51.589-115,115-115 s115,51.589,115,115C299.276,203.49,208.327,319.829,184.322,349.251z"/> <path d="M184.277,72.293c-30.476,0-55.269,24.793-55.269,55.269s24.793,55.269,55.269,55.269s55.269-24.793,55.269-55.269 S214.753,72.293,184.277,72.293z M184.277,167.83c-22.204,0-40.269-18.064-40.269-40.269s18.064-40.269,40.269-40.269 s40.269,18.064,40.269,40.269S206.48,167.83,184.277,167.83z"/></svg>
+							<span>My Location</span>
+						</button>
+					</div>
+					<div class="flex flex-col sm:flex-row items-start sm:items-center gap-3 sm:justify-between">
+
+						<!-- Recent Searches Dropdown -->
+						<div class="relative">
+							<button type="button" class="flex items-center gap-2 px-4 py-2 rounded-xl bg-glass border border-white/20 hover:bg-white/15 transition text-sm text-white/80">
+								<svg xmlns="http://www.w3.org/2000/svg" width="16px" height="16px" viewBox="0 0 24 24" fill="none"><path d="M12 8V12L14.5 14.5" stroke="#1C274C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="stroke-sky-300"/><path d="M7 3.33782C8.47087 2.48697 10.1786 2 12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 10.1786 2.48697 8.47087 3.33782 7" stroke-width="1.5" stroke-linecap="round" class="stroke-sky-300"/></svg>
+								<span>Recent Searches</span>
+								<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" height="14px" width="14px"><path d="M297.4 470.6C309.9 483.1 330.2 483.1 342.7 470.6L534.7 278.6C547.2 266.1 547.2 245.8 534.7 233.3C522.2 220.8 501.9 220.8 489.4 233.3L320 402.7L150.6 233.4C138.1 220.9 117.8 220.9 105.3 233.4C92.8 245.9 92.8 266.2 105.3 278.7L297.3 470.7z" class="fill-white/50"/></svg>
+							</button>
+
+							<!-- Dropdown Panel (hidden by default) -->
+							<div class="hidden absolute top-full left-0 mt-2 w-56 rounded-xl glass border border-white/20 shadow-2xl z-20 overflow-hidden">
+								<ul class="py-1 text-sm">
+									<li class="flex items-center gap-2 px-4 py-2.5 hover:bg-white/10 cursor-pointer transition">
+										<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" height="14px" width="14px"><path d="M352 348.4C416.1 333.9 464 276.5 464 208C464 128.5 399.5 64 320 64C240.5 64 176 128.5 176 208C176 276.5 223.9 333.9 288 348.4L288 544C288 561.7 302.3 576 320 576C337.7 576 352 561.7 352 544L352 348.4zM328 160C297.1 160 272 185.1 272 216C272 229.3 261.3 240 248 240C234.7 240 224 229.3 224 216C224 158.6 270.6 112 328 112C341.3 112 352 122.7 352 136C352 149.3 341.3 160 328 160z" class="fill-sky-300"/></svg>
+										<span>New York, US</span>
+									</li>
+									<li class="flex items-center gap-2 px-4 py-2.5 hover:bg-white/10 cursor-pointer transition">
+										<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" height="14px" width="14px"><path d="M352 348.4C416.1 333.9 464 276.5 464 208C464 128.5 399.5 64 320 64C240.5 64 176 128.5 176 208C176 276.5 223.9 333.9 288 348.4L288 544C288 561.7 302.3 576 320 576C337.7 576 352 561.7 352 544L352 348.4zM328 160C297.1 160 272 185.1 272 216C272 229.3 261.3 240 248 240C234.7 240 224 229.3 224 216C224 158.6 270.6 112 328 112C341.3 112 352 122.7 352 136C352 149.3 341.3 160 328 160z" class="fill-sky-300"/></svg>
+										<span>London, UK</span>
+									</li>
+									<li class="flex items-center gap-2 px-4 py-2.5 hover:bg-white/10 cursor-pointer transition">
+										<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" height="14px" width="14px"><path d="M352 348.4C416.1 333.9 464 276.5 464 208C464 128.5 399.5 64 320 64C240.5 64 176 128.5 176 208C176 276.5 223.9 333.9 288 348.4L288 544C288 561.7 302.3 576 320 576C337.7 576 352 561.7 352 544L352 348.4zM328 160C297.1 160 272 185.1 272 216C272 229.3 261.3 240 248 240C234.7 240 224 229.3 224 216C224 158.6 270.6 112 328 112C341.3 112 352 122.7 352 136C352 149.3 341.3 160 328 160z" class="fill-sky-300"/></svg>
+										<span>Tokyo, JP</span>
+									</li>
+									<li class="flex items-center gap-2 px-4 py-2.5 hover:bg-white/10 cursor-pointer transition">
+										<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" height="14px" width="14px"><path d="M352 348.4C416.1 333.9 464 276.5 464 208C464 128.5 399.5 64 320 64C240.5 64 176 128.5 176 208C176 276.5 223.9 333.9 288 348.4L288 544C288 561.7 302.3 576 320 576C337.7 576 352 561.7 352 544L352 348.4zM328 160C297.1 160 272 185.1 272 216C272 229.3 261.3 240 248 240C234.7 240 224 229.3 224 216C224 158.6 270.6 112 328 112C341.3 112 352 122.7 352 136C352 149.3 341.3 160 328 160z" class="fill-sky-300"/></svg>
+										<span>Sydney, AU</span>
+									</li>
+								</ul>
+							</div>
+						</div>
+						
+						<!-- Temperature Unit Toggle -->
+						<div class="flex items-center gap-1 bg-glass rounded-xl border border-white/20 p-1">
+							<button type="button" class="px-4 py-1.5 rounded-lg bg-sky-500 text-white text-sm font-semibold transition-all">°C</button>
+							<button type="button" class="px-4 py-1.5 rounded-lg text-white/60 hover:text-white hover:bg-white/10 text-sm font-semibold transition-all">°F</button>
+						</div>
+					</div>
+				</div>
+            </div>
+        </section>
+    </main>
 </body>
 </html>

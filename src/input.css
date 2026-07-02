@@ -1,5 +1,13 @@
 @import "tailwindcss";
 
+@theme {
+    --shadow-xs: 0 0 32px 0 rgba(99, 179, 237, 0.18);
+}
+
 .bg-glass {
-    @apply bg-[#ffffff1f] backdrop-blur-lg border border-[#ffffff38];
+    @apply bg-white/10 backdrop-blur-lg border border-white/20;
+}
+
+.container {
+    @apply max-w-285 mx-auto;
 }
