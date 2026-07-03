@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
     <link rel="stylesheet" href="src/output.css">
 </head>
 <body class="min-h-screen bg-linear-to-br from-slate-900 via-blue-950 to-indigo-900 text-white font-sans antialiased">
@@ -37,11 +38,11 @@
             <div class="container">
 				<div class="p-5 rounded-2xl bg-glass shadow-xs flex flex-col gap-4">
 					<div class="flex flex-col gap-3 grow md:flex-row">
-						<div class="relative">
+						<div class="relative grow">
 							<span class="absolute left-3.25 top-3.25">
 								<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="search" aria-hidden="true" class="lucide lucide-search w-4 h-4"><path d="m21 21-4.34-4.34"></path><circle cx="11" cy="11" r="8"></circle></svg>
 							</span>
-							<input type="text" id="citySearch" placeholder="Search for a city..." class="w-full py-2.5 pr-3.75 pl-10 text-sm leading-5 border border-white/20 rounded-[10px] focus:outline-0">
+							<input type="text" id="citySearch" placeholder="Search for a city..." class="w-full py-2.5 pr-3.75 pl-10 text-sm leading-5 bg-glass border border-white/20 rounded-[10px] focus:outline-0">
 						</div>
 						<button type="button" class="flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl bg-sky-500 hover:bg-sky-400 active:scale-95 transition-all font-semibold text-sm shadow-lg shadow-sky-500/30">Search</button>
 						<button type="button" class="flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl bg-glass border border-white/20 hover:bg-white/15 active:scale-95 transition-all font-semibold text-sm">
@@ -51,8 +52,8 @@
 					</div>
 					<div class="flex flex-col sm:flex-row items-start sm:items-center gap-3 sm:justify-between">
 
-						<!-- Recent Searches Dropdown -->
-						<div class="relative">
+						<!-- Recent Searches Dropdown (hidden when no searches)-->
+						<div class="hidden relative">
 							<button type="button" class="flex items-center gap-2 px-4 py-2 rounded-xl bg-glass border border-white/20 hover:bg-white/15 transition text-sm text-white/80">
 								<svg xmlns="http://www.w3.org/2000/svg" width="16px" height="16px" viewBox="0 0 24 24" fill="none"><path d="M12 8V12L14.5 14.5" stroke="#1C274C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="stroke-sky-300"/><path d="M7 3.33782C8.47087 2.48697 10.1786 2 12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 10.1786 2.48697 8.47087 3.33782 7" stroke-width="1.5" stroke-linecap="round" class="stroke-sky-300"/></svg>
 								<span>Recent Searches</span>
@@ -60,22 +61,22 @@
 							</button>
 
 							<!-- Dropdown Panel (hidden by default) -->
-							<div class="hidden absolute top-full left-0 mt-2 w-56 rounded-xl glass border border-white/20 shadow-2xl z-20 overflow-hidden">
+							<div class="hidden absolute top-full left-0 mt-2 w-56 rounded-xl bg-glass border border-white/20 shadow-2xl z-20 overflow-hidden">
 								<ul class="py-1 text-sm">
 									<li class="flex items-center gap-2 px-4 py-2.5 hover:bg-white/10 cursor-pointer transition">
-										<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" height="14px" width="14px"><path d="M352 348.4C416.1 333.9 464 276.5 464 208C464 128.5 399.5 64 320 64C240.5 64 176 128.5 176 208C176 276.5 223.9 333.9 288 348.4L288 544C288 561.7 302.3 576 320 576C337.7 576 352 561.7 352 544L352 348.4zM328 160C297.1 160 272 185.1 272 216C272 229.3 261.3 240 248 240C234.7 240 224 229.3 224 216C224 158.6 270.6 112 328 112C341.3 112 352 122.7 352 136C352 149.3 341.3 160 328 160z" class="fill-sky-300"/></svg>
+										<i class="fa-solid fa-map-pin text-sky-300 text-[12px]"></i>
 										<span>New York, US</span>
 									</li>
 									<li class="flex items-center gap-2 px-4 py-2.5 hover:bg-white/10 cursor-pointer transition">
-										<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" height="14px" width="14px"><path d="M352 348.4C416.1 333.9 464 276.5 464 208C464 128.5 399.5 64 320 64C240.5 64 176 128.5 176 208C176 276.5 223.9 333.9 288 348.4L288 544C288 561.7 302.3 576 320 576C337.7 576 352 561.7 352 544L352 348.4zM328 160C297.1 160 272 185.1 272 216C272 229.3 261.3 240 248 240C234.7 240 224 229.3 224 216C224 158.6 270.6 112 328 112C341.3 112 352 122.7 352 136C352 149.3 341.3 160 328 160z" class="fill-sky-300"/></svg>
+										<i class="fa-solid fa-map-pin text-sky-300 text-[12px]"></i>
 										<span>London, UK</span>
 									</li>
 									<li class="flex items-center gap-2 px-4 py-2.5 hover:bg-white/10 cursor-pointer transition">
-										<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" height="14px" width="14px"><path d="M352 348.4C416.1 333.9 464 276.5 464 208C464 128.5 399.5 64 320 64C240.5 64 176 128.5 176 208C176 276.5 223.9 333.9 288 348.4L288 544C288 561.7 302.3 576 320 576C337.7 576 352 561.7 352 544L352 348.4zM328 160C297.1 160 272 185.1 272 216C272 229.3 261.3 240 248 240C234.7 240 224 229.3 224 216C224 158.6 270.6 112 328 112C341.3 112 352 122.7 352 136C352 149.3 341.3 160 328 160z" class="fill-sky-300"/></svg>
+										<i class="fa-solid fa-map-pin text-sky-300 text-[12px]"></i>
 										<span>Tokyo, JP</span>
 									</li>
 									<li class="flex items-center gap-2 px-4 py-2.5 hover:bg-white/10 cursor-pointer transition">
-										<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" height="14px" width="14px"><path d="M352 348.4C416.1 333.9 464 276.5 464 208C464 128.5 399.5 64 320 64C240.5 64 176 128.5 176 208C176 276.5 223.9 333.9 288 348.4L288 544C288 561.7 302.3 576 320 576C337.7 576 352 561.7 352 544L352 348.4zM328 160C297.1 160 272 185.1 272 216C272 229.3 261.3 240 248 240C234.7 240 224 229.3 224 216C224 158.6 270.6 112 328 112C341.3 112 352 122.7 352 136C352 149.3 341.3 160 328 160z" class="fill-sky-300"/></svg>
+										<i class="fa-solid fa-map-pin text-sky-300 text-[12px]"></i>
 										<span>Sydney, AU</span>
 									</li>
 								</ul>
@@ -91,6 +92,58 @@
 				</div>
             </div>
         </section>
+
+		<!-- ===================== WEATHER ALERT ===================== -->
+		<div class="container mb-7.5">
+			<div class="flex items-start gap-3 rounded-2xl px-5 py-4 bg-linear-to-r from-amber-500/25 to-orange-500/20 border border-amber-400/40 shadow-lg">
+				<i class="fa-solid fa-circle-exclamation w-5 leading-none text-amber-300 shrink-0 mt-0.5"></i>
+				<div class="flex-1 min-w-0">
+					<p class="font-semibold text-amber-200 text-sm">Extreme Heat Alert</p>
+					<p class="text-amber-100/70 text-xs mt-0.5">Temperatures may exceed 42°C today. Stay hydrated and avoid prolonged sun exposure.</p>
+				</div>
+				<button type="button" class="text-amber-300/60 hover:text-amber-200 transition shrink-0 leading-none">x</button>
+			</div>
+		</div>
+		
+		<!-- ===================== TODAY'S WEATHER CARD ===================== -->
+		<section>
+			<div class="container">
+				<div class="bg-glass rounded-3xl p-6 border border-white/20">
+			
+					<!-- City + Date -->
+					<div class="flex flex-wrap items-start justify-between gap-3 mb-6">
+						<div>
+							<div class="flex items-center gap-2">
+								<svg xmlns="http://www.w3.org/2000/svg" fill="#00bcff" height="20px" width="20px" viewBox="0 0 368.553 368.553"><path d="M184.277,0c-71.683,0-130,58.317-130,130c0,87.26,119.188,229.855,124.263,235.883c1.417,1.685,3.504,2.66,5.705,2.67 c0.011,0,0.021,0,0.032,0c2.189,0,4.271-0.957,5.696-2.621c5.075-5.926,124.304-146.165,124.304-235.932 C314.276,58.317,255.96,0,184.277,0z M184.322,349.251C160.385,319.48,69.277,201.453,69.277,130c0-63.411,51.589-115,115-115 s115,51.589,115,115C299.276,203.49,208.327,319.829,184.322,349.251z"></path> <path d="M184.277,72.293c-30.476,0-55.269,24.793-55.269,55.269s24.793,55.269,55.269,55.269s55.269-24.793,55.269-55.269 S214.753,72.293,184.277,72.293z M184.277,167.83c-22.204,0-40.269-18.064-40.269-40.269s18.064-40.269,40.269-40.269 s40.269,18.064,40.269,40.269S206.48,167.83,184.277,167.83z"></path></svg>
+								<h2 class="text-2xl font-bold tracking-tight">San Francisco, US</h2>
+							</div>
+							<div class="flex items-center gap-1.5 mt-1 text-sm text-white/50">
+								<i class="fa-regular fa-calendar text-sm"></i>
+								<span>Wednesday, 1 July 2026</span>
+							</div>
+						</div>
+						<span
+							class="text-xs px-3 py-1 rounded-full bg-sky-500/20 border border-sky-400/30 text-sky-300 font-medium">
+							Updated just now
+						</span>
+					</div>
+			
+					<!-- Main Temp  -->
+					<div class="flex flex-col sm:flex-row items-center sm:items-start gap-6 mb-8">
+						<div class="w-28 h-28 rounded-3xl bg-linear-to-br from-amber-400/30 to-sky-500/30 border border-white/15 flex items-center justify-center shadow-xl shrink-0">
+							<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-16 h-16 text-amber-300"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2"></path><path d="M12 20v2"></path><path d="m4.93 4.93 1.41 1.41"></path><path d="m17.66 17.66 1.41 1.41"></path><path d="M2 12h2"></path><path d="M20 12h2"></path><path d="m6.34 17.66-1.41 1.41"></path><path d="m19.07 4.93-1.41 1.41"></path>
+							</svg>
+						</div>
+						<div class="text-center sm:text-left">
+							<div class="text-7xl font-extrabold tracking-tighter leading-none text-white">28<span class="text-4xl font-bold text-sky-300 align-top mt-2 inline-block">°C</span></div>
+							<p class="text-xl font-semibold text-amber-200 mt-1">Sunny</p>
+							<p class="text-sm text-white/50 mt-0.5">Feels like <span class="text-white/70 font-medium">31°C</span>
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
     </main>
 </body>
 </html>
