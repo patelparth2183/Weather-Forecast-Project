@@ -16,7 +16,7 @@
             <div class="flex items-center justify-between">
                 <div class="flex items-center gap-x-2.5">
                     <div class="w-10 h-10 flex items-center justify-center p-1.25 bg-sky-500 rounded-xl">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="cloud-sun" aria-hidden="true" class="lucide lucide-cloud-sun w-6 h-6 text-white"><path d="M12 2v2"></path><path d="m4.93 4.93 1.41 1.41"></path><path d="M20 12h2"></path><path d="m19.07 4.93-1.41 1.41"></path><path d="M15.947 12.65a4 4 0 0 0-5.925-4.128"></path><path d="M13 22H7a5 5 0 1 1 4.9-6H13a3 3 0 0 1 0 6Z"></path></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6 text-white"><path d="M12 2v2"></path><path d="m4.93 4.93 1.41 1.41"></path><path d="M20 12h2"></path><path d="m19.07 4.93-1.41 1.41"></path><path d="M15.947 12.65a4 4 0 0 0-5.925-4.128"></path><path d="M13 22H7a5 5 0 1 1 4.9-6H13a3 3 0 0 1 0 6Z"></path></svg>
                     </div>
                     <div>
                         <h2 class="text-lg leading-5 text-white font-bold">Weather Forecast</h2>
@@ -40,7 +40,7 @@
 					<div class="flex flex-col gap-3 grow md:flex-row">
 						<div class="relative grow">
 							<span class="absolute left-3.25 top-3.25">
-								<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="search" aria-hidden="true" class="lucide lucide-search w-4 h-4"><path d="m21 21-4.34-4.34"></path><circle cx="11" cy="11" r="8"></circle></svg>
+								<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 text-sky-300"><path d="m21 21-4.34-4.34"></path><circle cx="11" cy="11" r="8"></circle></svg>
 							</span>
 							<input type="text" id="citySearch" placeholder="Search for a city..." class="w-full py-2.5 pr-3.75 pl-10 text-sm leading-5 bg-glass border border-white/20 rounded-[10px] focus:outline-0">
 						</div>
@@ -95,7 +95,7 @@
 
 		<!-- ===================== WEATHER ALERT ===================== -->
 		<div class="container mb-7.5">
-			<div class="flex items-start gap-3 rounded-2xl px-5 py-4 bg-linear-to-r from-amber-500/25 to-orange-500/20 border border-amber-400/40 shadow-lg">
+			<div class="flex items-start gap-3 rounded-2xl px-5 py-4 bg-amber-500/25 border border-amber-400/40 shadow-lg">
 				<i class="fa-solid fa-circle-exclamation w-5 leading-none text-amber-300 shrink-0 mt-0.5"></i>
 				<div class="flex-1 min-w-0">
 					<p class="font-semibold text-amber-200 text-sm">Extreme Heat Alert</p>
@@ -106,7 +106,7 @@
 		</div>
 		
 		<!-- ===================== TODAY'S WEATHER CARD ===================== -->
-		<section>
+		<section class="mb-7.5">
 			<div class="container">
 				<div class="bg-glass rounded-3xl p-6 border border-white/20">
 			
@@ -122,10 +122,7 @@
 								<span>Wednesday, 1 July 2026</span>
 							</div>
 						</div>
-						<span
-							class="text-xs px-3 py-1 rounded-full bg-sky-500/20 border border-sky-400/30 text-sky-300 font-medium">
-							Updated just now
-						</span>
+						<span class="text-xs px-3 py-1 rounded-full bg-sky-500/20 border border-sky-400/30 text-sky-300 font-medium">Updated just now</span>
 					</div>
 			
 					<!-- Main Temp  -->
@@ -137,13 +134,209 @@
 						<div class="text-center sm:text-left">
 							<div class="text-7xl font-extrabold tracking-tighter leading-none text-white">28<span class="text-4xl font-bold text-sky-300 align-top mt-2 inline-block">°C</span></div>
 							<p class="text-xl font-semibold text-amber-200 mt-1">Sunny</p>
-							<p class="text-sm text-white/50 mt-0.5">Feels like <span class="text-white/70 font-medium">31°C</span>
-							</p>
+							<p class="text-sm text-white/50 mt-0.5">Feels like <span class="text-white/70 font-medium">31°C</span></p>
+						</div>
+					</div>
+
+					<!-- Stats Grid -->
+					<div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+					
+						<!-- Feels Like -->
+						<div class="bg-glass rounded-2xl p-4 flex flex-col gap-2 hover:bg-white/12 transition">
+							<div class="flex items-center gap-1.5 text-xs text-white/50 uppercase tracking-wider font-medium">
+								<i class="fa-solid fa-temperature-full text-orange-400 text-sm"></i>
+								Feels Like
+							</div>
+							<span class="text-2xl font-bold">31°C</span>
+						</div>
+					
+						<!-- Humidity -->
+						<div class="bg-glass rounded-2xl p-4 flex flex-col gap-2 hover:bg-white/12 transition">
+							<div class="flex items-center gap-1.5 text-xs text-white/50 uppercase tracking-wider font-medium">
+								<i class="fa-solid fa-droplet text-sm text-sky-400"></i>
+								Humidity
+							</div>
+							<span class="text-2xl font-bold">62<span class="text-base font-medium text-white/60">%</span></span>
+						</div>
+					
+						<!-- Wind Speed -->
+						<div class="bg-glass rounded-2xl p-4 flex flex-col gap-2 hover:bg-white/12 transition">
+							<div class="flex items-center gap-1.5 text-xs text-white/50 uppercase tracking-wider font-medium">
+								<i class="fa-solid fa-wind text-sm text-teal-400"></i>
+								Wind Speed
+							</div>
+							<span class="text-2xl font-bold">14<span class="text-base font-medium text-white/60"> km/h</span></span>
+						</div>
+					
+						<!-- Pressure -->
+						<div class="bg-glass rounded-2xl p-4 flex flex-col gap-2 hover:bg-white/12 transition">
+							<div class="flex items-center gap-1.5 text-xs text-white/50 uppercase tracking-wider font-medium">
+								<i class="fa-solid fa-gauge text-sm text-violet-400"></i>
+								Pressure
+							</div>
+							<span class="text-2xl font-bold">1013<span class="text-base font-medium text-white/60"> hPa</span></span>
+						</div>
+					
+						<!-- Visibility -->
+						<div class="bg-glass rounded-2xl p-4 flex flex-col gap-2 hover:bg-white/12 transition md:col-span-2">
+							<div class="flex items-center gap-1.5 text-xs text-white/50 uppercase tracking-wider font-medium">
+								<i class="fa-regular fa-eye text-sm text-indigo-400"></i>
+								Visibility
+							</div>
+							<span class="text-2xl font-bold">10<span class="text-base font-medium text-white/60"> km</span></span>
+						</div>
+					
+						<!-- UV Index -->
+						<div class="bg-glass rounded-2xl p-4 flex flex-col gap-2 hover:bg-white/12 transition">
+							<div class="flex items-center gap-1.5 text-xs text-white/50 uppercase tracking-wider font-medium">
+								<i class="fa-regular fa-sun text-sm text-yellow-400"></i>
+								UV Index
+							</div>
+							<span class="text-2xl font-bold">7 <span class="text-sm font-medium text-white/60">High</span></span>
+						</div>
+					
+						<!-- Sunrise / Sunset -->
+						<div class="bg-glass rounded-2xl p-4 flex flex-col gap-2 hover:bg-white/12 transition">
+							<div class="flex items-center gap-1.5 text-xs text-white/50 uppercase tracking-wider font-medium">
+								<i class="fa-solid fa-mountain-sun text-sm text-amber-400"></i>
+								Sun
+							</div>
+							<div class="flex flex-col text-sm">
+								<span><span class="text-white/50">Rise</span> <span class="font-semibold">6:12 AM</span></span>
+								<span><span class="text-white/50">Set</span> <span class="font-semibold">8:44 PM</span></span>
+							</div>
+						</div>
+					
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- ===================== 5-DAY FORECAST ===================== -->
+		<section class="mb-7.5">
+			<div class="container">
+				<h2 class="text-lg font-bold mb-4 flex items-center gap-2 text-white/90">
+					<i class="fa-regular fa-calendar-days text-5 text-sky-400"></i>
+					5-Day Forecast
+				</h2>
+				<div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3">
+
+					<!-- Day 1 -->
+					<div class="bg-glass rounded-2xl p-4 flex flex-col items-center gap-2 hover:bg-white/12 hover:-translate-y-1 transition-all duration-200">
+						<p class="text-xs font-semibold text-white/50 uppercase tracking-wide">Thu</p>
+						<p class="text-xs text-white/35">Jul 2</p>
+						<div class="w-12 h-12 rounded-xl bg-amber-400/20 flex items-center justify-center my-1">
+							<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-7 h-7 text-amber-300"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2"></path><path d="M12 20v2"></path><path d="m4.93 4.93 1.41 1.41"></path><path d="m17.66 17.66 1.41 1.41"></path><path d="M2 12h2"></path><path d="M20 12h2"></path><path d="m6.34 17.66-1.41 1.41"></path><path d="m19.07 4.93-1.41 1.41"></path></svg>
+						</div>
+						<div class="text-center">
+							<p class="text-xl font-bold">30°</p>
+							<p class="text-xs text-white/50 mt-0.5">Sunny</p>
+						</div>
+						<div class="w-full border-t border-white/10 pt-2 mt-1 space-y-1">
+							<div class="flex items-center justify-between text-xs text-white/50">
+								<span class="flex items-center gap-1"><i class="fa-solid fa-droplet text-[12px] text-sky-400"></i>58%</span>
+								<span class="flex items-center gap-1"><i class="fa-solid fa-wind text-[12px] text-teal-400"></i>12 km/h</span>
+							</div>
+						</div>
+					</div>
+			
+					<!-- Day 2 -->
+					<div
+						class="bg-glass rounded-2xl p-4 flex flex-col items-center gap-2 hover:bg-white/12 hover:-translate-y-1 transition-all duration-200">
+						<p class="text-xs font-semibold text-white/50 uppercase tracking-wide">Fri</p>
+						<p class="text-xs text-white/35">Jul 3</p>
+						<div class="w-12 h-12 rounded-xl bg-sky-400/20 flex items-center justify-center my-1">
+							<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-7 h-7 text-sky-300"><path d="M12 2v2"></path><path d="m4.93 4.93 1.41 1.41"></path><path d="M20 12h2"></path><path d="m19.07 4.93-1.41 1.41"></path><path d="M15.947 12.65a4 4 0 0 0-5.925-4.128"></path><path d="M13 22H7a5 5 0 1 1 4.9-6H13a3 3 0 0 1 0 6Z"></path></svg>
+						</div>
+						<div class="text-center">
+							<p class="text-xl font-bold">25°</p>
+							<p class="text-xs text-white/50 mt-0.5">Partly Cloudy</p>
+						</div>
+						<div class="w-full border-t border-white/10 pt-2 mt-1 space-y-1">
+							<div class="flex items-center justify-between text-xs text-white/50">
+								<span class="flex items-center gap-1"><i class="fa-solid fa-droplet text-[12px] text-sky-400"></i>65%</span>
+								<span class="flex items-center gap-1"><i class="fa-solid fa-wind text-[12px] text-teal-400"></i>18 km/h</span>
+							</div>
+						</div>
+					</div>
+			
+					<!-- Day 3 -->
+					<div
+						class="bg-glass rounded-2xl p-4 flex flex-col items-center gap-2 hover:bg-white/12 hover:-translate-y-1 transition-all duration-200">
+						<p class="text-xs font-semibold text-white/50 uppercase tracking-wide">Sat</p>
+						<p class="text-xs text-white/35">Jul 4</p>
+						<div class="w-12 h-12 rounded-xl bg-slate-400/20 flex items-center justify-center my-1">
+							<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" class="w-7 h-7 text-slate-300"><path d="M4 14.899A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 2.5 8.242"></path><path d="M16 14v6"></path><path d="M8 14v6"></path><path d="M12 16v6"></path></svg>
+						</div>
+						<div class="text-center">
+							<p class="text-xl font-bold">19°</p>
+							<p class="text-xs text-white/50 mt-0.5">Rainy</p>
+						</div>
+						<div class="w-full border-t border-white/10 pt-2 mt-1 space-y-1">
+							<div class="flex items-center justify-between text-xs text-white/50">
+								<span class="flex items-center gap-1"><i class="fa-solid fa-droplet text-[12px] text-sky-400"></i>82%</span>
+								<span class="flex items-center gap-1"><i class="fa-solid fa-wind text-[12px] text-teal-400"></i>22 km/h</span>
+							</div>
+						</div>
+					</div>
+			
+					<!-- Day 4 -->
+					<div
+						class="bg-glass rounded-2xl p-4 flex flex-col items-center gap-2 hover:bg-white/12 hover:-translate-y-1 transition-all duration-200">
+						<p class="text-xs font-semibold text-white/50 uppercase tracking-wide">Sun</p>
+						<p class="text-xs text-white/35">Jul 5</p>
+						<div class="w-12 h-12 rounded-xl bg-violet-400/20 flex items-center justify-center my-1">
+							<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-7 h-7 text-violet-300"><path d="M6 16.326A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 .5 8.973"></path><path d="m13 12-3 5h4l-3 5"></path></svg>
+						</div>
+						<div class="text-center">
+							<p class="text-xl font-bold">22°</p>
+							<p class="text-xs text-white/50 mt-0.5">Thunderstorm</p>
+						</div>
+						<div class="w-full border-t border-white/10 pt-2 mt-1 space-y-1">
+							<div class="flex items-center justify-between text-xs text-white/50">
+								<span class="flex items-center gap-1"><i class="fa-solid fa-droplet text-[12px] text-sky-400"></i>90%</span>
+								<span class="flex items-center gap-1"><i class="fa-solid fa-wind text-[12px] text-teal-400"></i>30 km/h</span>
+							</div>
+						</div>
+					</div>
+			
+					<!-- Day 5 -->
+					<div
+						class="bg-glass rounded-2xl p-4 flex flex-col items-center gap-2 hover:bg-white/12 hover:-translate-y-1 transition-all duration-200 sm:col-span-1 col-span-2">
+						<p class="text-xs font-semibold text-white/50 uppercase tracking-wide">Mon</p>
+						<p class="text-xs text-white/35">Jul 6</p>
+						<div class="w-12 h-12 rounded-xl bg-amber-400/20 flex items-center justify-center my-1">
+							<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-7 h-7 text-amber-300"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2"></path><path d="M12 20v2"></path><path d="m4.93 4.93 1.41 1.41"></path><path d="m17.66 17.66 1.41 1.41"></path><path d="M2 12h2"></path><path d="M20 12h2"></path><path d="m6.34 17.66-1.41 1.41"></path><path d="m19.07 4.93-1.41 1.41"></path></svg>
+						</div>
+						<div class="text-center">
+							<p class="text-xl font-bold">27°</p>
+							<p class="text-xs text-white/50 mt-0.5">Clear Sky</p>
+						</div>
+						<div class="w-full border-t border-white/10 pt-2 mt-1 space-y-1">
+							<div class="flex items-center justify-between text-xs text-white/50">
+								<span class="flex items-center gap-1"><i class="fa-solid fa-droplet text-[12px] text-sky-400"></i>50%</span>
+								<span class="flex items-center gap-1"><i class="fa-solid fa-wind text-[12px] text-teal-400"></i>10 km/h</span>
+							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 		</section>
     </main>
+
+	<!-- ===================== FOOTER ===================== -->
+	<footer class="mt-12 border-t border-white/10">
+		<div
+			class="max-w-6xl mx-auto px-4 py-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-white/35">
+			<div class="flex items-center gap-2">
+				<div class="w-6 h-6 rounded-lg bg-linear-to-br from-sky-400 to-blue-600 flex items-center justify-center">
+					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-3.5 h-3.5 text-white"><path d="M12 2v2"></path><path d="m4.93 4.93 1.41 1.41"></path><path d="M20 12h2"></path><path d="m19.07 4.93-1.41 1.41"></path><path d="M15.947 12.65a4 4 0 0 0-5.925-4.128"></path><path d="M13 22H7a5 5 0 1 1 4.9-6H13a3 3 0 0 1 0 6Z"></path></svg>
+				</div>
+				<span class="font-semibold text-white/50">Weather Forecast</span>
+			</div>
+			<p>© 2026 Weather Forecast. All rights reserved.</p>
+			<p class="flex items-center gap-1">Powered by <span class="text-white/50 font-medium ml-1">Weather API</span></p>
+		</div>
+	</footer>
 </body>
 </html>
