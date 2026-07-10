@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weather Forecast - Real-time conditions & 5-day outlook</title>
+	<link rel="icon" href="images/favicon.ico">
 
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
     <link rel="stylesheet" href="src/output.css">
@@ -37,14 +38,15 @@
         <section class="mb-7.5">
             <div class="container">
 				<div class="p-5 rounded-2xl bg-glass shadow-xs flex flex-col gap-4">
-					<div class="flex flex-col gap-3 grow md:flex-row">
+					<div class="flex flex-col gap-3 grow md:flex-row items-start">
 						<div class="relative grow">
 							<span class="absolute left-3.25 top-3.25">
 								<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 text-sky-300"><path d="m21 21-4.34-4.34"></path><circle cx="11" cy="11" r="8"></circle></svg>
 							</span>
-							<input type="text" id="citySearch" placeholder="Search for a city..." class="w-full py-2.5 pr-3.75 pl-10 text-sm leading-5 bg-glass border border-white/20 rounded-[10px] focus:outline-0">
+							<input type="text" id="cityInput" placeholder="Search for a city..." class="w-full py-2.5 pr-3.75 pl-10 text-sm leading-5 bg-glass border border-white/20 rounded-[10px] focus:outline-0">
+							<p id="errorMsg" class="hidden font-semibold text-rose-300 text-sm mt-1"></p>
 						</div>
-						<button type="button" id="searchButton" class="flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl bg-sky-500 hover:bg-sky-400 active:scale-95 transition-all font-semibold text-sm shadow-lg shadow-sky-500/30">Search</button>
+						<button type="button" id="searchButton" class="flex items-center justify-center gap-2 px-5 py-[11px] rounded-xl bg-sky-500 hover:bg-sky-400 active:scale-95 transition-all font-semibold text-sm shadow-lg shadow-sky-500/30">Search</button>
 						<button type="button" id="myLocation" class="flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl bg-glass border border-white/20 hover:bg-white/15 active:scale-95 transition-all font-semibold text-sm">
 							<svg xmlns="http://www.w3.org/2000/svg" fill="#00d492" height="16px" width="16px" viewBox="0 0 368.553 368.553"><path d="M184.277,0c-71.683,0-130,58.317-130,130c0,87.26,119.188,229.855,124.263,235.883c1.417,1.685,3.504,2.66,5.705,2.67 c0.011,0,0.021,0,0.032,0c2.189,0,4.271-0.957,5.696-2.621c5.075-5.926,124.304-146.165,124.304-235.932 C314.276,58.317,255.96,0,184.277,0z M184.322,349.251C160.385,319.48,69.277,201.453,69.277,130c0-63.411,51.589-115,115-115 s115,51.589,115,115C299.276,203.49,208.327,319.829,184.322,349.251z"/> <path d="M184.277,72.293c-30.476,0-55.269,24.793-55.269,55.269s24.793,55.269,55.269,55.269s55.269-24.793,55.269-55.269 S214.753,72.293,184.277,72.293z M184.277,167.83c-22.204,0-40.269-18.064-40.269-40.269s18.064-40.269,40.269-40.269 s40.269,18.064,40.269,40.269S206.48,167.83,184.277,167.83z"/></svg>
 							<span>My Location</span>

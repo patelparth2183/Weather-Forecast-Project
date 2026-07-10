@@ -1,27 +1,37 @@
-const currentAPI = fetch('https://api.openweathermap.org/data/2.5/forecast?q=London&appid=9ecb754eb02dcfe338f6b2a0a123e5ff&units=metric');
-const forcastAPI = fetch('https://api.openweathermap.org/data/2.5/forecast?q=London&appid=9ecb754eb02dcfe338f6b2a0a123e5ff&units=metric')
+const currentAPI = fetch('https://api.openweathermap.org/data/2.5/weather?q=London&appid=9ecb754eb02dcfe338f6b2a0a123e5ff&units=metric');
+const forcastAPI = fetch('https://api.openweathermap.org/data/2.5/forecast?q=London&appid=9ecb754eb02dcfe338f6b2a0a123e5ff&units=metric');
 
-async function calling() {
-    try {
-        const api = await forcastAPI;
-        const result = api.json();
-        console.log(result);
-    } catch {
-        console.log(error);
-    }
-}
+// currentAPI
+// .then((response) => response.json())
+// .then((data) => {
+//     console.log(data);
+//     console.log(data.main.temp);
+//     console.log(data.main.humidity);
+//     console.log(data.wind.speed);
+//     console.log(data.weather[0].description);
+//     console.log(data.weather[0].icon);
+//     console.log("Break");
+// });
 
-calling();
+
+// forcastAPI
+// .then((response) => response.json())
+// .then((data) => {
+//     console.log(data);
+//     console.log(data.cod);
+//     console.log(data.list[0]);
+// });
 
 //---------- DOM Selection ----------
 //TEMPARATURE UNIT
 const tempUnit = document.getElementsByClassName('tempUnit');
 
 // SEARCH BOX
-const citySearch = document.getElementById('citySearch');
+const cityInput = document.getElementById('cityInput');
 const myLocation = document.getElementById('myLocation');
 const recentSearches = document.getElementById('recentSearches');
 const searchButton = document.getElementById('searchButton');
+const errorMsg = document.getElementById('errorMsg');
 const btnC = document.getElementById('btnC');
 const btnf = document.getElementById('btnf');
 
@@ -91,3 +101,26 @@ const dayFiveTemp = document.getElementById('dayFiveTemp');
 const dayFiveWeather = document.getElementById('dayFiveWeather');
 const dayFiveHumidity = document.getElementById('DayFiveHumidity');
 const dayFiveWind = document.getElementById('dayFiveWind');
+
+
+
+// Search City
+searchButton.addEventListener('click', validateSearch);
+
+function validateSearch() {
+    const city = cityInput.value.trim();
+    errorMsg.textContent = "";
+    if (city === "") {
+        errorMsg.style = 'display: block;';
+        errorMsg.innerHTML = "Please enter a city.";
+        return
+    }
+
+    const cityRegex = /^[A-Za-z\s]+$/;
+
+    if (!cityRegex.test(city)) {
+        errorMsg.innerHTML = "Enter a valid city name.";
+        return;
+    }
+    console.log(city);
+}
