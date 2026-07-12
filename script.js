@@ -1,26 +1,11 @@
-const currentAPI = fetch('https://api.openweathermap.org/data/2.5/weather?q=London&appid=9ecb754eb02dcfe338f6b2a0a123e5ff&units=metric');
-const forcastAPI = fetch('https://api.openweathermap.org/data/2.5/forecast?q=London&appid=9ecb754eb02dcfe338f6b2a0a123e5ff&units=metric');
+"use strict";
+const APIKey = '9ecb754eb02dcfe338f6b2a0a123e5ff';
+const baseURL = 'https://api.openweathermap.org/data/2.5';
+const currentAPI = fetch('https://api.openweathermap.org/data/2.5/weather?q=London&appid=9ecb754eb02dcfe338f6b2a0a123e5ff&units=metric').then((response) => response.json());
+const forcastAPI = fetch('https://api.openweathermap.org/data/2.5/forecast?q=London&appid=9ecb754eb02dcfe338f6b2a0a123e5ff&units=metric').then((response) => response.json());
 
-// currentAPI
-// .then((response) => response.json())
-// .then((data) => {
-//     console.log(data);
-//     console.log(data.main.temp);
-//     console.log(data.main.humidity);
-//     console.log(data.wind.speed);
-//     console.log(data.weather[0].description);
-//     console.log(data.weather[0].icon);
-//     console.log("Break");
-// });
-
-
-// forcastAPI
-// .then((response) => response.json())
-// .then((data) => {
-//     console.log(data);
-//     console.log(data.cod);
-//     console.log(data.list[0]);
-// });
+currentAPI.then((data)=>console.log(data));
+forcastAPI.then((data)=>console.log(data));
 
 //---------- DOM Selection ----------
 //TEMPARATURE UNIT
@@ -28,18 +13,23 @@ const tempUnit = document.getElementsByClassName('tempUnit');
 
 // SEARCH BOX
 const cityInput = document.getElementById('cityInput');
-const myLocation = document.getElementById('myLocation');
-const recentSearches = document.getElementById('recentSearches');
 const searchButton = document.getElementById('searchButton');
-const errorMsg = document.getElementById('errorMsg');
+const myLocation = document.getElementById('myLocation');
 const btnC = document.getElementById('btnC');
-const btnf = document.getElementById('btnf');
+const btnF = document.getElementById('btnF');
+const recentWrapper = document.getElementById('recentWrapper');
+const recentSearches = document.getElementById('recentSearches');
+const recentDropdown = document.getElementById('recentDropdown');
+const recentIcon = document.getElementById('recentIcon');
+const errorMsg = document.getElementById('errorMsg');
 
 // WEATHER ALERT
+const alertBanner = document.getElementById('alertBanner');
 const exceedTemp = document.getElementById('exceedTemp');
 const closeAlert = document.getElementById('closeAlert');
 
 // TODAY'S WEATHER CARD
+const mainTemp = document.getElementById('mainTemp');
 const mainLocation = document.getElementById('mainLocation');
 const dateToday = document.getElementById('dateToday');
 const mainWeatherIcon = document.getElementById('mainWeatherIcon');
@@ -47,7 +37,6 @@ const iconSunny = document.getElementById('iconSunny');
 const iconCloudy = document.getElementById('iconCloudy');
 const iconRainy = document.getElementById('iconRainy');
 const iconThunder = document.getElementById('iconThunder');
-const mainTemp = document.getElementById('mainTemp');
 const currentWeather = document.getElementById('currentWeather');
 
 // TODAY'S WEATHER CARD GRID
@@ -57,6 +46,8 @@ const sunRise = document.getElementById('sunRise');
 const sunSet = document.getElementById('sunSet');
 
 // 5-DAY FORECAST
+var forecastContainer = document.getElementById('forecastContainer');
+
 // (Day 1)
 const dayOneDay = document.getElementById('dayOneDay');
 const dayOneDate = document.getElementById('dayOneDate');
@@ -103,24 +94,89 @@ const dayFiveHumidity = document.getElementById('DayFiveHumidity');
 const dayFiveWind = document.getElementById('dayFiveWind');
 
 
+const defaultCity = 'Mumbai';
 
-// Search City
-searchButton.addEventListener('click', validateSearch);
+// --- EVENT LISTENERS ---
 
-function validateSearch() {
-    const city = cityInput.value.trim();
-    errorMsg.textContent = "";
-    if (city === "") {
-        errorMsg.style = 'display: block;';
-        errorMsg.innerHTML = "Please enter a city.";
-        return
-    }
+searchButton.addEventListener('click', function () {
+	fetchWeatherByCity();
+});
 
-    const cityRegex = /^[A-Za-z\s]+$/;
+cityInput.addEventListener('keydown', function (e) {
+	if (e.key === 'Enter') {
+		fetchWeatherByCity();
+	}
+});
 
-    if (!cityRegex.test(city)) {
-        errorMsg.innerHTML = "Enter a valid city name.";
-        return;
-    }
-    console.log(city);
+
+// FETCH WEATHER BY CITY
+
+function fetchWeatherByCity(addedCity) {
+	let city;
+	if (addedCity) {
+		city = addedCity.trim();
+	} else {
+		city = cityInput.value.trim();
+	}
+
+	if (!city) {
+		showError('Please enter a valid city name.');
+		return;
+	}
+
+	let weatherUrl  = baseURL + '/weather?q='  + encodeURIComponent(city) + '&units=metric&appid=' + APIKey;
+  	let forecastUrl = baseURL + '/forecast?q=' + encodeURIComponent(city) + '&units=metric&appid=' + APIKey;
+
+	let weatherData;
+
+	fetch(weatherUrl)
+	.then((response) => {
+		if(!response.ok) {
+			return response.json().then((err) => {
+				throw new Error(err.message || 'City not found');
+			});
+		}
+		return response.json();
+	})
+	.then((data) => {
+		weatherData = data;
+		return fetch(forecastUrl);
+	})
+	.then((response) => {
+		if(!response.ok) {
+			return response.json().then((err) => {
+				throw new Error(err.message || 'Forecast not found');
+			});
+		}
+		return response.json();
+	})
+	.then((forecastDataResult) => {
+		displayCurrentWeather(weatherData);
+		displayForecast(forecastDataResult);
+		saveRecentSearch(weatherData.name);
+	})
+	.catch((err) => {
+		const msg = err.message.toLowerCase()
+		if (msg.indexOf('city not found') !== -1 || msg.indexOf('404') !== -1) {
+			showError('City not found. Please check the spelling and try again');
+		} else if (msg.indexOf('404') !== -1 || msg.indexOf('invalid api key') !== -1) {
+			showError('Invalid API key. Please configure a valid API key.');
+		} else if (msg.indexOf('failed to fetch') !== -1 || msg.indexOf('networkerror') !== -1) {
+			showError('Network error. Please check your internet connection and try again.');
+		} else {
+			showError(err.message || 'An unexpected error occurred. Please try again.');
+		}
+	})
+
+	hideError();
+}
+
+// SHOW ERROR
+function showError(message) {
+	errorMsg.classList.remove('hidden');
+	errorMsg.textContent = message;
+}
+
+function hideError() {
+	errorMsg.classList.add('hidden');
 }
