@@ -46,8 +46,8 @@
 							<input type="text" id="cityInput" placeholder="Search for a city..." class="w-full py-2.5 pr-3.75 pl-10 text-sm leading-5 bg-glass border border-white/20 rounded-[10px] focus:outline-0">
 							<p id="errorMsg" class="hidden font-semibold text-rose-300 text-sm mt-1"></p>
 						</div>
-						<button type="button" id="searchButton" class="flex items-center justify-center gap-2 px-5 py-2.75 rounded-xl bg-sky-500 hover:bg-sky-400 active:scale-95 transition-all font-semibold text-sm shadow-lg shadow-sky-500/30">Search</button>
-						<button type="button" id="myLocation" class="flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl bg-glass border border-white/20 hover:bg-white/15 active:scale-95 transition-all font-semibold text-sm">
+						<button type="button" id="searchButton" class="flex items-center justify-center gap-2 px-5 py-2.75 rounded-xl bg-sky-500 hover:bg-sky-400 active:scale-95 transition-all font-semibold text-sm shadow-lg shadow-sky-500/30 cursor-pointer">Search</button>
+						<button type="button" id="myLocation" class="flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl bg-glass border border-white/20 hover:bg-white/15 active:scale-95 transition-all font-semibold text-sm cursor-pointer">
 							<svg xmlns="http://www.w3.org/2000/svg" fill="#00d492" height="16px" width="16px" viewBox="0 0 368.553 368.553"><path d="M184.277,0c-71.683,0-130,58.317-130,130c0,87.26,119.188,229.855,124.263,235.883c1.417,1.685,3.504,2.66,5.705,2.67 c0.011,0,0.021,0,0.032,0c2.189,0,4.271-0.957,5.696-2.621c5.075-5.926,124.304-146.165,124.304-235.932 C314.276,58.317,255.96,0,184.277,0z M184.322,349.251C160.385,319.48,69.277,201.453,69.277,130c0-63.411,51.589-115,115-115 s115,51.589,115,115C299.276,203.49,208.327,319.829,184.322,349.251z"/> <path d="M184.277,72.293c-30.476,0-55.269,24.793-55.269,55.269s24.793,55.269,55.269,55.269s55.269-24.793,55.269-55.269 S214.753,72.293,184.277,72.293z M184.277,167.83c-22.204,0-40.269-18.064-40.269-40.269s18.064-40.269,40.269-40.269 s40.269,18.064,40.269,40.269S206.48,167.83,184.277,167.83z"/></svg>
 							<span>My Location</span>
 						</button>
@@ -56,7 +56,7 @@
 
 						<!-- Recent Searches Dropdown (hidden when no searches)-->
 						<div id="recentWrapper" class="hidden relative">
-							<button type="button" id="recentSearches" class="flex items-center gap-2 px-4 py-2 rounded-xl bg-glass border border-white/20 hover:bg-white/15 transition text-sm text-white/80">
+							<button type="button" id="recentSearches" class="flex items-center gap-2 px-4 py-2 rounded-xl bg-glass border border-white/20 hover:bg-white/15 transition text-sm text-white/80 cursor-pointer">
 								<svg xmlns="http://www.w3.org/2000/svg" width="16px" height="16px" viewBox="0 0 24 24" fill="none"><path d="M12 8V12L14.5 14.5" stroke="#1C274C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="stroke-sky-300"/><path d="M7 3.33782C8.47087 2.48697 10.1786 2 12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 10.1786 2.48697 8.47087 3.33782 7" stroke-width="1.5" stroke-linecap="round" class="stroke-sky-300"/></svg>
 								<span>Recent Searches</span>
 								<svg id="recentIcon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" height="14px" width="14px"><path d="M297.4 470.6C309.9 483.1 330.2 483.1 342.7 470.6L534.7 278.6C547.2 266.1 547.2 245.8 534.7 233.3C522.2 220.8 501.9 220.8 489.4 233.3L320 402.7L150.6 233.4C138.1 220.9 117.8 220.9 105.3 233.4C92.8 245.9 92.8 266.2 105.3 278.7L297.3 470.7z" class="fill-white/50"/></svg>
@@ -87,8 +87,8 @@
 						
 						<!-- Temperature Unit Toggle -->
 						<div class="flex items-center gap-1 bg-glass rounded-xl border border-white/20 p-1">
-							<button type="button" id="btnC" class="px-4 py-1.5 rounded-lg bg-sky-500 text-white text-sm font-semibold transition-all">°C</button>
-							<button type="button" id="btnF" class="px-4 py-1.5 rounded-lg text-white/60 hover:text-white hover:bg-white/10 text-sm font-semibold transition-all">°F</button>
+							<button type="button" id="btnC" class="px-4 py-1.5 rounded-lg bg-sky-500 text-white text-sm font-semibold transition-all cursor-pointer">°C</button>
+							<button type="button" id="btnF" class="px-4 py-1.5 rounded-lg text-white/60 hover:text-white hover:bg-white/10 text-sm font-semibold transition-all cursor-pointer">°F</button>
 						</div>
 					</div>
 				</div>
@@ -96,14 +96,14 @@
         </section>
 
 		<!-- ===================== WEATHER ALERT ===================== -->
-		<div id="alertBanner" class="container mb-7.5">
+		<div id="alertBanner" class="hidden container mb-7.5">
 			<div class="flex items-start gap-3 rounded-2xl px-5 py-4 bg-amber-500/25 border border-amber-400/40 shadow-lg">
 				<i class="fa-solid fa-circle-exclamation w-5 leading-none text-amber-300 shrink-0 mt-0.5"></i>
 				<div class="flex-1 min-w-0">
 					<p class="font-semibold text-amber-200 text-sm">Extreme Heat Alert</p>
 					<p class="text-amber-100/70 text-xs mt-0.5">Temperatures may exceed <span id="exceedTemp">42</span><span class="tempUnit">°C</span> today. Stay hydrated and avoid prolonged sun exposure.</p>
 				</div>
-				<button type="button" id="closeAlert" class="text-amber-300/60 hover:text-amber-200 transition shrink-0 leading-none">x</button>
+				<button type="button" id="closeAlert" class="text-amber-300/60 hover:text-amber-200 transition shrink-0 leading-none cursor-pointer">x</button>
 			</div>
 		</div>
 		
@@ -146,10 +146,14 @@
 							<div id="iconThunder" class="hidden">
 								<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-16 h-16 text-violet-300"><path d="M6 16.326A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 .5 8.973"></path><path d="m13 12-3 5h4l-3 5"></path></svg>
 							</div>
+							<!-- Snow -->
+							<div id="iconSnow" class="hidden">
+								<svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" class="w-16 h-16 fill-gray-200"><path d="M8 16a.5.5 0 0 1-.5-.5v-1.293l-.646.647a.5.5 0 0 1-.707-.708L7.5 12.793V8.866l-3.4 1.963-.496 1.85a.5.5 0 1 1-.966-.26l.237-.882-1.12.646a.5.5 0 0 1-.5-.866l1.12-.646-.884-.237a.5.5 0 1 1 .26-.966l1.848.495L7 8 3.6 6.037l-1.85.495a.5.5 0 0 1-.258-.966l.883-.237-1.12-.646a.5.5 0 1 1 .5-.866l1.12.646-.237-.883a.5.5 0 1 1 .966-.258l.495 1.849L7.5 7.134V3.207L6.147 1.854a.5.5 0 1 1 .707-.708l.646.647V.5a.5.5 0 1 1 1 0v1.293l.647-.647a.5.5 0 1 1 .707.708L8.5 3.207v3.927l3.4-1.963.496-1.85a.5.5 0 1 1 .966.26l-.236.882 1.12-.646a.5.5 0 0 1 .5.866l-1.12.646.883.237a.5.5 0 1 1-.26.966l-1.848-.495L9 8l3.4 1.963 1.849-.495a.5.5 0 0 1 .259.966l-.883.237 1.12.646a.5.5 0 0 1-.5.866l-1.12-.646.236.883a.5.5 0 1 1-.966.258l-.495-1.849-3.4-1.963v3.927l1.353 1.353a.5.5 0 0 1-.707.708l-.647-.647V15.5a.5.5 0 0 1-.5.5z"/></svg>
+							</div>
 						</div>
 						<div class="text-center sm:text-left">
-							<div id="mainTemp" class="text-7xl font-extrabold tracking-tighter leading-none text-white">28<span class="tempUnit text-4xl font-bold text-sky-300 align-top mt-2 inline-block">°C</span></div>
-							<p id="currentWeather" class="text-xl font-semibold text-amber-200 mt-1">Sunny</p>
+							<div class="text-7xl font-extrabold tracking-tighter leading-none text-white"><span id="mainTemp">28</span> <span class="tempUnit text-4xl font-bold text-sky-300 align-top mt-2 inline-block">°C</span></div>
+							<p id="currentWeather" class="text-xl font-semibold text-amber-200 mt-1 capitalize">Sunny</p>
 						</div>
 					</div>
 
