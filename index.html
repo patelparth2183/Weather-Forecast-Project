@@ -117,11 +117,11 @@
 						<div>
 							<div class="flex items-center gap-2">
 								<svg xmlns="http://www.w3.org/2000/svg" fill="#00bcff" height="20px" width="20px" viewBox="0 0 368.553 368.553"><path d="M184.277,0c-71.683,0-130,58.317-130,130c0,87.26,119.188,229.855,124.263,235.883c1.417,1.685,3.504,2.66,5.705,2.67 c0.011,0,0.021,0,0.032,0c2.189,0,4.271-0.957,5.696-2.621c5.075-5.926,124.304-146.165,124.304-235.932 C314.276,58.317,255.96,0,184.277,0z M184.322,349.251C160.385,319.48,69.277,201.453,69.277,130c0-63.411,51.589-115,115-115 s115,51.589,115,115C299.276,203.49,208.327,319.829,184.322,349.251z"></path> <path d="M184.277,72.293c-30.476,0-55.269,24.793-55.269,55.269s24.793,55.269,55.269,55.269s55.269-24.793,55.269-55.269 S214.753,72.293,184.277,72.293z M184.277,167.83c-22.204,0-40.269-18.064-40.269-40.269s18.064-40.269,40.269-40.269 s40.269,18.064,40.269,40.269S206.48,167.83,184.277,167.83z"></path></svg>
-								<h2 id="mainLocation" class="text-2xl font-bold tracking-tight">San Francisco, US</h2>
+								<h2 id="mainLocation" class="text-2xl font-bold tracking-tight">-</h2>
 							</div>
 							<div class="flex items-center gap-1.5 mt-1 text-sm text-white/50">
 								<i class="fa-regular fa-calendar text-sm"></i>
-								<span id="dateToday">Wednesday, 1 July 2026</span>
+								<span id="dateToday">-</span>
 							</div>
 						</div>
 						<span class="text-xs px-3 py-1 rounded-full bg-sky-500/20 border border-sky-400/30 text-sky-300 font-medium">Updated just now</span>
@@ -131,7 +131,7 @@
 					<div class="flex flex-col sm:flex-row items-center sm:items-start gap-6 mb-8">
 						<div id="mainWeatherIcon" class="w-28 h-28 rounded-3xl bg-linear-to-br from-amber-400/30 to-sky-500/30 border border-white/15 flex items-center justify-center shadow-xl shrink-0">
 							<!-- Sunny & Clear Sky -->
-							<div id="iconSunny">
+							<div id="iconSunny" class="hidden">
 								<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-16 h-16 text-amber-300"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2"></path><path d="M12 20v2"></path><path d="m4.93 4.93 1.41 1.41"></path><path d="m17.66 17.66 1.41 1.41"></path><path d="M2 12h2"></path><path d="M20 12h2"></path><path d="m6.34 17.66-1.41 1.41"></path><path d="m19.07 4.93-1.41 1.41"></path></svg>
 							</div>
 							<!-- Cloudy -->
@@ -152,8 +152,8 @@
 							</div>
 						</div>
 						<div class="text-center sm:text-left">
-							<div class="text-7xl font-extrabold tracking-tighter leading-none text-white"><span id="mainTemp">28</span> <span class="tempUnit text-4xl font-bold text-sky-300 align-top mt-2 inline-block">°C</span></div>
-							<p id="currentWeather" class="text-xl font-semibold text-amber-200 mt-1 capitalize">Sunny</p>
+							<div class="text-7xl font-extrabold tracking-tighter leading-none text-white"><span id="mainTemp">-</span> <span class="tempUnit text-4xl font-bold text-sky-300 align-top mt-2 inline-block">°C</span></div>
+							<p id="currentWeather" class="text-xl font-semibold text-amber-200 mt-1 capitalize">-</p>
 						</div>
 					</div>
 
@@ -166,7 +166,7 @@
 								<i class="fa-solid fa-droplet text-sm text-sky-400"></i>
 								Humidity
 							</div>
-							<span id="humidity" class="text-2xl font-bold">62<span class="text-base font-medium text-white/60">%</span></span>
+							<span id="humidity" class="text-2xl font-bold">-</span>
 						</div>
 					
 						<!-- Wind Speed -->
@@ -175,7 +175,7 @@
 								<i class="fa-solid fa-wind text-sm text-teal-400"></i>
 								Wind Speed
 							</div>
-							<span id="windSpeed" class="text-2xl font-bold">14<span class="text-base font-medium text-white/60"> km/h</span></span>
+							<span id="windSpeed" class="text-2xl font-bold">-</span>
 						</div>
 					</div>
 				</div>
@@ -189,166 +189,14 @@
 					<i class="fa-regular fa-calendar-days text-5 text-sky-400"></i>
 					5-Day Forecast
 				</h2>
-				<div id="forecastContainer" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3">
-
-					<!-- Day 1 -->
-					<div class="bg-glass rounded-2xl p-3 lg:p-4 flex flex-col items-center gap-2 hover:bg-white/12 hover:-translate-y-1 transition-all duration-200">
-						<p id="dayOneDay" class="text-xs font-semibold text-white/50 uppercase tracking-wide">Thu</p>
-						<p id="dayOneDate" class="text-xs text-white/35">Jul 2</p>
-						<div id="dayOneIcon" class="w-12 h-12 rounded-xl bg-amber-400/20 flex items-center justify-center my-1">
-							<div class="sunnyDay">
-								<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-7 h-7 text-amber-300"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2"></path><path d="M12 20v2"></path><path d="m4.93 4.93 1.41 1.41"></path><path d="m17.66 17.66 1.41 1.41"></path><path d="M2 12h2"></path><path d="M20 12h2"></path><path d="m6.34 17.66-1.41 1.41"></path><path d="m19.07 4.93-1.41 1.41"></path></svg>
-							</div>
-							<div class="hidden cloudyDay">
-								<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-7 h-7 text-sky-300"><path d="M12 2v2"></path><path d="m4.93 4.93 1.41 1.41"></path><path d="M20 12h2"></path><path d="m19.07 4.93-1.41 1.41"></path><path d="M15.947 12.65a4 4 0 0 0-5.925-4.128"></path><path d="M13 22H7a5 5 0 1 1 4.9-6H13a3 3 0 0 1 0 6Z"></path></svg>
-							</div>
-							<div class="hidden rainyDay">
-								<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" class="w-7 h-7 text-slate-300"><path d="M4 14.899A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 2.5 8.242"></path><path d="M16 14v6"></path><path d="M8 14v6"></path><path d="M12 16v6"></path></svg>
-							</div>
-							<div class="hidden thunderDay">
-								<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-7 h-7 text-violet-300"><path d="M6 16.326A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 .5 8.973"></path><path d="m13 12-3 5h4l-3 5"></path></svg>
-							</div>
-						</div>
-						<div class="text-center">
-							<p id="dayOneTemp" class="text-xl font-bold">30°</p>
-							<p id="dayOneWeather" class="text-xs text-white/50 mt-0.5">Sunny</p>
-						</div>
-						<div class="w-full border-t border-white/10 pt-2 mt-1 space-y-1">
-							<div class="flex items-center justify-between text-xs text-white/50">
-								<span id="dayOneHumidity" class="flex items-center gap-1"><i class="fa-solid fa-droplet text-[12px] text-sky-400"></i>58%</span>
-								<span id="dayOneWind" class="flex items-center gap-1"><i class="fa-solid fa-wind text-[12px] text-teal-400"></i>12 km/h</span>
-							</div>
-						</div>
-					</div>
-			
-					<!-- Day 2 -->
-					<div class="bg-glass rounded-2xl p-3 lg:p-4 flex flex-col items-center gap-2 hover:bg-white/12 hover:-translate-y-1 transition-all duration-200">
-						<p id="dayTwoDay" class="text-xs font-semibold text-white/50 uppercase tracking-wide">Fri</p>
-						<p id="dayTwoDate" class="text-xs text-white/35">Jul 3</p>
-						<div id="dayTwoIcon" class="w-12 h-12 rounded-xl bg-sky-400/20 flex items-center justify-center my-1">
-							<div class="hidden sunnyDay">
-								<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-7 h-7 text-amber-300"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2"></path><path d="M12 20v2"></path><path d="m4.93 4.93 1.41 1.41"></path><path d="m17.66 17.66 1.41 1.41"></path><path d="M2 12h2"></path><path d="M20 12h2"></path><path d="m6.34 17.66-1.41 1.41"></path><path d="m19.07 4.93-1.41 1.41"></path></svg>
-							</div>
-							<div class="cloudyDay">
-								<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-7 h-7 text-sky-300"><path d="M12 2v2"></path><path d="m4.93 4.93 1.41 1.41"></path><path d="M20 12h2"></path><path d="m19.07 4.93-1.41 1.41"></path><path d="M15.947 12.65a4 4 0 0 0-5.925-4.128"></path><path d="M13 22H7a5 5 0 1 1 4.9-6H13a3 3 0 0 1 0 6Z"></path></svg>
-							</div>
-							<div class="hidden rainyDay">
-								<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" class="w-7 h-7 text-slate-300"><path d="M4 14.899A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 2.5 8.242"></path><path d="M16 14v6"></path><path d="M8 14v6"></path><path d="M12 16v6"></path></svg>
-							</div>
-							<div class="hidden thunderDay">
-								<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-7 h-7 text-violet-300"><path d="M6 16.326A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 .5 8.973"></path><path d="m13 12-3 5h4l-3 5"></path></svg>
-							</div>
-						</div>
-						<div class="text-center">
-							<p id="dayTwoTemp" class="text-xl font-bold">25°</p>
-							<p id="dayTwoWeather" class="text-xs text-white/50 mt-0.5">Partly Cloudy</p>
-						</div>
-						<div class="w-full border-t border-white/10 pt-2 mt-1 space-y-1">
-							<div class="flex items-center justify-between text-xs text-white/50">
-								<span id="dayTwoHumidity" class="flex items-center gap-1"><i class="fa-solid fa-droplet text-[12px] text-sky-400"></i>65%</span>
-								<span id="dayTwoWind" class="flex items-center gap-1"><i class="fa-solid fa-wind text-[12px] text-teal-400"></i>18 km/h</span>
-							</div>
-						</div>
-					</div>
-			
-					<!-- Day 3 -->
-					<div class="bg-glass rounded-2xl p-3 lg:p-4 flex flex-col items-center gap-2 hover:bg-white/12 hover:-translate-y-1 transition-all duration-200">
-						<p id="dayThreeDay" class="text-xs font-semibold text-white/50 uppercase tracking-wide">Sat</p>
-						<p id="dayThreeDate" class="text-xs text-white/35">Jul 4</p>
-						<div id="dayThreeIcon" class="w-12 h-12 rounded-xl bg-slate-400/20 flex items-center justify-center my-1">
-							<div class="hidden sunnyDay">
-								<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-7 h-7 text-amber-300"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2"></path><path d="M12 20v2"></path><path d="m4.93 4.93 1.41 1.41"></path><path d="m17.66 17.66 1.41 1.41"></path><path d="M2 12h2"></path><path d="M20 12h2"></path><path d="m6.34 17.66-1.41 1.41"></path><path d="m19.07 4.93-1.41 1.41"></path></svg>
-							</div>
-							<div class="hidden cloudyDay">
-								<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-7 h-7 text-sky-300"><path d="M12 2v2"></path><path d="m4.93 4.93 1.41 1.41"></path><path d="M20 12h2"></path><path d="m19.07 4.93-1.41 1.41"></path><path d="M15.947 12.65a4 4 0 0 0-5.925-4.128"></path><path d="M13 22H7a5 5 0 1 1 4.9-6H13a3 3 0 0 1 0 6Z"></path></svg>
-							</div>
-							<div class="rainyDay">
-								<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" class="w-7 h-7 text-slate-300"><path d="M4 14.899A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 2.5 8.242"></path><path d="M16 14v6"></path><path d="M8 14v6"></path><path d="M12 16v6"></path></svg>
-							</div>
-							<div class="hidden thunderDay">
-								<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-7 h-7 text-violet-300"><path d="M6 16.326A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 .5 8.973"></path><path d="m13 12-3 5h4l-3 5"></path></svg>
-							</div>
-						</div>
-						<div class="text-center">
-							<p id="dayThreeTemp" class="text-xl font-bold">19°</p>
-							<p id="dayThreeWeather" class="text-xs text-white/50 mt-0.5">Rainy</p>
-						</div>
-						<div class="w-full border-t border-white/10 pt-2 mt-1 space-y-1">
-							<div class="flex items-center justify-between text-xs text-white/50">
-								<span id="dayThreeHumidity" class="flex items-center gap-1"><i class="fa-solid fa-droplet text-[12px] text-sky-400"></i>82%</span>
-								<span id="dayThreeWind" class="flex items-center gap-1"><i class="fa-solid fa-wind text-[12px] text-teal-400"></i>22 km/h</span>
-							</div>
-						</div>
-					</div>
-			
-					<!-- Day 4 -->
-					<div class="bg-glass rounded-2xl p-3 lg:p-4 flex flex-col items-center gap-2 hover:bg-white/12 hover:-translate-y-1 transition-all duration-200">
-						<p id="dayFourDay" class="text-xs font-semibold text-white/50 uppercase tracking-wide">Sun</p>
-						<p id="dayFourDate" class="text-xs text-white/35">Jul 5</p>
-						<div id="dayFourIcon" class="w-12 h-12 rounded-xl bg-violet-400/20 flex items-center justify-center my-1">
-							<div class="hidden sunnyDay">
-								<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-7 h-7 text-amber-300"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2"></path><path d="M12 20v2"></path><path d="m4.93 4.93 1.41 1.41"></path><path d="m17.66 17.66 1.41 1.41"></path><path d="M2 12h2"></path><path d="M20 12h2"></path><path d="m6.34 17.66-1.41 1.41"></path><path d="m19.07 4.93-1.41 1.41"></path></svg>
-							</div>
-							<div class="hidden cloudyDay">
-								<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-7 h-7 text-sky-300"><path d="M12 2v2"></path><path d="m4.93 4.93 1.41 1.41"></path><path d="M20 12h2"></path><path d="m19.07 4.93-1.41 1.41"></path><path d="M15.947 12.65a4 4 0 0 0-5.925-4.128"></path><path d="M13 22H7a5 5 0 1 1 4.9-6H13a3 3 0 0 1 0 6Z"></path></svg>
-							</div>
-							<div class="hidden rainyDay">
-								<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" class="w-7 h-7 text-slate-300"><path d="M4 14.899A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 2.5 8.242"></path><path d="M16 14v6"></path><path d="M8 14v6"></path><path d="M12 16v6"></path></svg>
-							</div>
-							<div class="thunderDay">
-								<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-7 h-7 text-violet-300"><path d="M6 16.326A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 .5 8.973"></path><path d="m13 12-3 5h4l-3 5"></path></svg>
-							</div>
-						</div>
-						<div class="text-center">
-							<p id="dayFourTemp" class="text-xl font-bold">22°</p>
-							<p id="dayFourWeather" class="text-xs text-white/50 mt-0.5">Thunderstorm</p>
-						</div>
-						<div class="w-full border-t border-white/10 pt-2 mt-1 space-y-1">
-							<div class="flex items-center justify-between text-xs text-white/50">
-								<span id="dayFourHumidity" class="flex items-center gap-1"><i class="fa-solid fa-droplet text-[12px] text-sky-400"></i>90%</span>
-								<span id="dayFourWind" class="flex items-center gap-1"><i class="fa-solid fa-wind text-[12px] text-teal-400"></i>30 km/h</span>
-							</div>
-						</div>
-					</div>
-			
-					<!-- Day 5 -->
-					<div class="bg-glass rounded-2xl p-3 lg:p-4 flex flex-col items-center gap-2 hover:bg-white/12 hover:-translate-y-1 transition-all duration-200 sm:col-span-1 col-span-2">
-						<p id="dayFiveDay" class="text-xs font-semibold text-white/50 uppercase tracking-wide">Mon</p>
-						<p id="dayFiveDate" class="text-xs text-white/35">Jul 6</p>
-						<div id="dayFiveIcon" class="w-12 h-12 rounded-xl bg-amber-400/20 flex items-center justify-center my-1">
-							<div class="sunnyDay">
-								<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-7 h-7 text-amber-300"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2"></path><path d="M12 20v2"></path><path d="m4.93 4.93 1.41 1.41"></path><path d="m17.66 17.66 1.41 1.41"></path><path d="M2 12h2"></path><path d="M20 12h2"></path><path d="m6.34 17.66-1.41 1.41"></path><path d="m19.07 4.93-1.41 1.41"></path></svg>
-							</div>
-							<div class="hidden cloudyDay">
-								<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-7 h-7 text-sky-300"><path d="M12 2v2"></path><path d="m4.93 4.93 1.41 1.41"></path><path d="M20 12h2"></path><path d="m19.07 4.93-1.41 1.41"></path><path d="M15.947 12.65a4 4 0 0 0-5.925-4.128"></path><path d="M13 22H7a5 5 0 1 1 4.9-6H13a3 3 0 0 1 0 6Z"></path></svg>
-							</div>
-							<div class="hidden rainyDay">
-								<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" class="w-7 h-7 text-slate-300"><path d="M4 14.899A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 2.5 8.242"></path><path d="M16 14v6"></path><path d="M8 14v6"></path><path d="M12 16v6"></path></svg>
-							</div>
-							<div class="hidden thunderDay">
-								<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-7 h-7 text-violet-300"><path d="M6 16.326A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 .5 8.973"></path><path d="m13 12-3 5h4l-3 5"></path></svg>
-							</div>
-						</div>
-						<div class="text-center">
-							<p id="dayFiveTemp" class="text-xl font-bold">27°</p>
-							<p id="dayFiveWeather" class="text-xs text-white/50 mt-0.5">Clear Sky</p>
-						</div>
-						<div class="w-full border-t border-white/10 pt-2 mt-1 space-y-1">
-							<div class="flex items-center justify-between text-xs text-white/50">
-								<span id="dayFiveHumidity" class="flex items-center gap-1"><i class="fa-solid fa-droplet text-[12px] text-sky-400"></i>50%</span>
-								<span id="dayFiveWind" class="flex items-center gap-1"><i class="fa-solid fa-wind text-[12px] text-teal-400"></i>10 km/h</span>
-							</div>
-						</div>
-					</div>
-				</div>
+				<div id="forecastContainer" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3"></div>
 			</div>
 		</section>
     </main>
 
 	<!-- ===================== FOOTER ===================== -->
-	<footer class="mt-12 border-t border-white/10">
-		<div
-			class="max-w-6xl mx-auto px-4 py-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-white/35">
+	<footer class="mt-12 border-t border-white/10 px-3.75">
+		<div class="container py-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-white/35">
 			<div class="flex items-center gap-2">
 				<div class="w-6 h-6 rounded-lg bg-linear-to-br from-sky-400 to-blue-600 flex items-center justify-center">
 					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-3.5 h-3.5 text-white"><path d="M12 2v2"></path><path d="m4.93 4.93 1.41 1.41"></path><path d="M20 12h2"></path><path d="m19.07 4.93-1.41 1.41"></path><path d="M15.947 12.65a4 4 0 0 0-5.925-4.128"></path><path d="M13 22H7a5 5 0 1 1 4.9-6H13a3 3 0 0 1 0 6Z"></path></svg>
