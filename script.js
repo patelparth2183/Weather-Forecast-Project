@@ -49,14 +49,16 @@ const sunRise = document.getElementById('sunRise');
 const sunSet = document.getElementById('sunSet');
 
 // 5-DAY FORECAST
-var forecastContainer = document.getElementById('forecastContainer');
+const forecastContainer = document.getElementById('forecastContainer');
 
-let iconBg = document.getElementsByClassName('iconBg');
-let sunnyDay = document.getElementsByClassName('sunnyDay');
-let cloudyDay = document.getElementsByClassName('cloudyDay');
-let rainyDay = document.getElementsByClassName('rainyDay');
-let thunderDay = document.getElementsByClassName('thunderDay');
-let snowDay = document.getElementsByClassName('snowDay');
+const iconBg = document.getElementsByClassName('iconBg');
+const sunnyDay = document.getElementsByClassName('sunnyDay');
+const cloudyDay = document.getElementsByClassName('cloudyDay');
+const rainyDay = document.getElementsByClassName('rainyDay');
+const thunderDay = document.getElementsByClassName('thunderDay');
+const snowDay = document.getElementsByClassName('snowDay');
+
+let tempCard = document.getElementsByClassName('tempCard');
 
 // ---------- EVENT LISTENERS ----------
 
@@ -78,13 +80,13 @@ myLocation.addEventListener('click', function () {
 	requestGeolocation();
 });
 
-// btnC.addEventListener('click', function () {
-// 	toggleTemperature('metric');
-// });
+btnC.addEventListener('click', function () {
+	toggleTemperature('metric');
+});
 
-// btnF.addEventListener('click', function () {
-// 	toggleTemperature('imperial');
-// });
+btnF.addEventListener('click', function () {
+	toggleTemperature('imperial');
+});
 
 // recentSearches.addEventListener('click', function () {
 // 	toggleDropdown();
@@ -172,10 +174,11 @@ function hideError() {
 
 // ---------- DISPLAY CURRENT WEATHER ----------
 function displayCurrentWeather(data) {
+	currentTemp = data.main.temp;
 	
 	mainLocation.innerHTML = data.name + ', ' + data.sys.country;
 	dateToday.innerHTML = formatedDate();
-	mainTemp.innerHTML = Math.round(data.main.temp);
+	mainTemp.innerHTML = displayTemp(data.main.temp);
 	currentWeather.innerHTML = data.weather[0].description;
 	humidity.innerHTML = data.main.humidity + " %";
 	windSpeed.innerHTML = Math.round(data.wind.speed) + " m/s";
@@ -290,10 +293,10 @@ function createForecastCard(item) {
 	let date = new Date(item.dt * 1000);
 	let weekday = date.toLocaleDateString('en-US', {weekday: 'short'});
 	let today = date.toLocaleDateString('en-US', {month: 'short', day: 'numeric'});
-	let tempC = item.main.temp;
+	let tempC = Math.round(item.main.temp);
 	let weatherDescription = item.weather[0].description;
 	let humidity = item.main.humidity;
-	let wind = item.wind.speed;
+	let wind = Math.round(item.wind.speed);
 
 	let card = document.createElement('div');
 	card.className = 'bg-glass rounded-2xl p-3 lg:p-4 flex flex-col items-center gap-2 hover:bg-white/12 hover:-translate-y-1 transition-all duration-200';
@@ -318,19 +321,20 @@ function createForecastCard(item) {
 		'</div>' +
 	'</div>' +
 	'<div class="text-center">' +
-		'<p class="text-xl font-bold">' + '<span class="tempC">' + Math.round(tempC) + '</span>'  + '°' + '</p>' +
+		'<p class="text-xl font-bold">' + '<span class="tempCard">' + tempC + '</span>'  + '°' + '</p>' +
 		'<p class="text-xs text-white/50 mt-0.5 capitalize">' + weatherDescription + '</p>' +
 	'</div>' +
 	'<div class="w-full border-t border-white/10 pt-2 mt-1 space-y-1">' +
 		'<div class="flex items-center justify-between text-xs text-white/50">' +
 			'<span class="flex items-center gap-1">' + '<i class="fa-solid fa-droplet text-[12px] text-sky-400"></i>' + humidity + '%' + '</span>' +
-			'<span class="flex items-center gap-1">' + '<i class="fa-solid fa-wind text-[12px] text-teal-400"></i>' + Math.round(wind) + 'km/h' + '</span>' +
+			'<span class="flex items-center gap-1">' + '<i class="fa-solid fa-wind text-[12px] text-teal-400"></i>' + wind + ' km/h' + '</span>' +
 		'</div>' +
 	'</div>'
 
 	return card;
 }
 
+// ---------- REQUEST GEOLOCATION ----------
 function requestGeolocation() {
 	navigator.geolocation.getCurrentPosition(
 		function currentLocation(pos) {
@@ -338,14 +342,12 @@ function requestGeolocation() {
 		},
 		function faildToLocate(err) {
 			let msg = 'Location access denied';
-			if(err.code === err.POSITION_UNAVAILABLE) {
-				msg = 'Location information is unavailable.'
-			};
 			showError(msg);
 		}
 	);
 }
 
+// ---------- FETCH WEATHER BY COORDINATES ----------
 function fetchWeatherByCoordinates(latitude, longitude) {
 	let weatherUrl  = baseURL + '/weather?lat='  + latitude + '&lon=' + longitude + '&units=metric&appid=' + APIKey;
   	let forecastUrl = baseURL + '/forecast?lat=' + latitude + '&lon=' + longitude + '&units=metric&appid=' + APIKey;
@@ -376,6 +378,53 @@ function fetchWeatherByCoordinates(latitude, longitude) {
 	.catch(function (err) {
 		showError(err.message || 'Failed to retrieve location weather. Please try again.');
 	})
+}
+
+// ---------- TOGGLE TEMPERATURE ----------
+let currentUnit = 'metric';
+let currentTemp = null;
+
+function toggleTemperature(unit) {
+	currentUnit = unit;
+
+	if(unit == 'metric') {
+		btnC.classList.remove('text-white/60', 'hover:text-white', 'hover:bg-white/10');
+		btnC.classList.add('bg-sky-500', 'text-white');
+		btnF.classList.remove('bg-sky-500', 'text-white');
+		btnF.classList.add('text-white/60', 'hover:text-white', 'hover:bg-white/10');
+		exceedTemp.innerHTML = 40;
+		for (let unit of tempUnit) {
+			unit.innerHTML = '°C';
+		}
+	} else {
+		btnF.classList.remove('text-white/60', 'hover:text-white', 'hover:bg-white/10');
+		btnF.classList.add('bg-sky-500', 'text-white');
+		btnC.classList.remove('bg-sky-500', 'text-white');
+		btnC.classList.add('text-white/60', 'hover:text-white', 'hover:bg-white/10');
+		exceedTemp.innerHTML = 104;
+		for (let unit of tempUnit) {
+			unit.innerHTML = '°F';
+		}
+	}
+
+	if (currentTemp !== null) {
+		mainTemp.innerHTML = displayTemp(currentTemp);
+	}
+}
+
+function displayTemp(celsius) {
+	if (celsius == null || celsius == undefined) {
+		return '-';
+	};
+	if (currentUnit == 'metric') {
+		return Math.round(celsius);
+	} else {
+		return toFahrenheit(celsius);
+	}
+}
+
+function toFahrenheit(celsius) {
+	return Math.round((celsius * 9) / 5 + 32);
 }
 
 function init() {
