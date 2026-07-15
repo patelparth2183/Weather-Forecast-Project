@@ -51,6 +51,13 @@ const sunSet = document.getElementById('sunSet');
 // 5-DAY FORECAST
 var forecastContainer = document.getElementById('forecastContainer');
 
+let iconBg = document.getElementsByClassName('iconBg');
+let sunnyDay = document.getElementsByClassName('sunnyDay');
+let cloudyDay = document.getElementsByClassName('cloudyDay');
+let rainyDay = document.getElementsByClassName('rainyDay');
+let thunderDay = document.getElementsByClassName('thunderDay');
+let snowDay = document.getElementsByClassName('snowDay');
+
 // ---------- EVENT LISTENERS ----------
 
 searchButton.addEventListener('click', function () {
@@ -67,9 +74,9 @@ closeAlert.addEventListener('click', function () {
 	hideAlert();
 });
 
-// myLocation.addEventListener('click', function () {
-// 	requestGeolocation();
-// });
+myLocation.addEventListener('click', function () {
+	requestGeolocation();
+});
 
 // btnC.addEventListener('click', function () {
 // 	toggleTemperature('metric');
@@ -131,9 +138,9 @@ function fetchWeatherByCity(addedCity) {
 		}
 		return response.json();
 	})
-	.then((forecastDataResult) => {
+	.then((data) => {
 		displayCurrentWeather(weatherData);
-		displayForecast(forecastDataResult);
+		displayForecast(data);
 		// saveRecentSearch(weatherData.name);
 	})
 	.catch((err) => {
@@ -183,16 +190,35 @@ function displayCurrentWeather(data) {
 	// Icon changes with weather condition
 	if (data.weather[0].icon === '01d' || data.weather[0].icon === '01n') {
 		iconSunny.classList.remove('hidden');
-	} else if (data.weather[0].icon === '02d' || data.weather[0].icon === '02n' || data.weather[0].icon === '03n' || data.weather[0].icon === '03n' || data.weather[0].icon === '04d' || data.weather[0].icon === '04n') {
+		iconCloudy.classList.add('hidden');
+		iconRainy.classList.add('hidden');
+		iconThunder.classList.add('hidden');
+		iconSnow.classList.add('hidden');
+	} else if (data.weather[0].icon === '02d' || data.weather[0].icon === '02n' || data.weather[0].icon === '03d' || data.weather[0].icon === '03n' || data.weather[0].icon === '04d' || data.weather[0].icon === '04n') {
+		iconSunny.classList.add('hidden');
 		iconCloudy.classList.remove('hidden');
-	} else if (data.weather[0].icon === '09d' || data.weather[0].icon === '09n' || data.weather[0].icon === '10n' || data.weather[0].icon === '10n') {
+		iconRainy.classList.add('hidden');
+		iconThunder.classList.add('hidden');
+		iconSnow.classList.add('hidden');
+	} else if (data.weather[0].icon === '09d' || data.weather[0].icon === '09n' || data.weather[0].icon === '10d' || data.weather[0].icon === '10n') {
+		iconSunny.classList.add('hidden');
+		iconCloudy.classList.add('hidden');
 		iconRainy.classList.remove('hidden');
+		iconThunder.classList.add('hidden');
+		iconSnow.classList.add('hidden');
 	} else if (data.weather[0].icon === '11d' || data.weather[0].icon === '11n') {
+		iconSunny.classList.add('hidden');
+		iconCloudy.classList.add('hidden');
+		iconRainy.classList.add('hidden');
 		iconThunder.classList.remove('hidden');
+		iconSnow.classList.add('hidden');
 	} else {
+		iconSunny.classList.add('hidden');
+		iconCloudy.classList.add('hidden');
+		iconRainy.classList.add('hidden');
+		iconThunder.classList.add('hidden');
 		iconSnow.classList.remove('hidden');
 	}
-	
 }
 
 // ---------- DATE FORMAT ----------
@@ -219,6 +245,24 @@ function displayForecast(data) {
 	let daily = filterDailyForecast(data.list);
 	for (let i = 0; i < daily.length; i++) {
 		forecastContainer.appendChild(createForecastCard(daily[i]));
+		
+		// Icon changes with weather condition
+		if (daily[i].weather[0].icon === '01d' || daily[i].weather[0].icon === '01n') {
+			iconBg[i].classList.add('bg-amber-400/20');
+			sunnyDay[i].classList.remove('hidden');
+		} else if (daily[i].weather[0].icon === '02d' || daily[i].weather[0].icon === '02n' || daily[i].weather[0].icon === '03d' || daily[i].weather[0].icon === '03n' || daily[i].weather[0].icon === '04d' || daily[i].weather[0].icon === '04n') {
+			iconBg[i].classList.add('bg-sky-400/20');
+			cloudyDay[i].classList.remove('hidden');
+		} else if (daily[i].weather[0].icon === '09d' || daily[i].weather[0].icon === '09n' || daily[i].weather[0].icon === '10d' || daily[i].weather[0].icon === '10n') {
+			iconBg[i].classList.add('bg-slate-400/20');
+			rainyDay[i].classList.remove('hidden');
+		} else if (daily[i].weather[0].icon === '11d' || daily[i].weather[0].icon === '11n') {
+			iconBg[i].classList.add('bg-violet-400/20');
+			thunderDay[i].classList.remove('hidden');
+		} else {
+			iconBg[i].classList.add('bg-amber-400/20');
+			snowDay[i].classList.remove('hidden');
+		}
 	}
 }
 
@@ -226,7 +270,7 @@ function filterDailyForecast(list) {
 	let seen = {};
 	let daily = [];
 
-	for (let i = 1; i < list.length; i++) {
+	for (let i = 0; i < list.length; i++) {
 		let date = new Date(list[i].dt * 1000);
 		let day = date.getFullYear() + '-' + date.getMonth() + '-' + date.getDate();
 
@@ -241,6 +285,7 @@ function filterDailyForecast(list) {
 	return daily;
 }
 
+// ---------- CREAT FORECAST CARDS ----------
 function createForecastCard(item) {
 	let date = new Date(item.dt * 1000);
 	let weekday = date.toLocaleDateString('en-US', {weekday: 'short'});
@@ -255,7 +300,7 @@ function createForecastCard(item) {
 	card.innerHTML = 
 	'<p class="text-xs font-semibold text-white/50 uppercase tracking-wide">' + weekday + '</p>' +
 	'<p class="text-xs text-white/35">' + today + '</p>' +
-	'<div class="w-12 h-12 rounded-xl bg-amber-400/20 flex items-center justify-center my-1">' +
+	'<div class="iconBg w-12 h-12 rounded-xl flex items-center justify-center my-1">' +
 		'<div class="hidden sunnyDay">' +
 			'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-7 h-7 text-amber-300"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2"></path><path d="M12 20v2"></path><path d="m4.93 4.93 1.41 1.41"></path><path d="m17.66 17.66 1.41 1.41"></path><path d="M2 12h2"></path><path d="M20 12h2"></path><path d="m6.34 17.66-1.41 1.41"></path><path d="m19.07 4.93-1.41 1.41"></path></svg>' +
 		'</div>' +
@@ -273,8 +318,8 @@ function createForecastCard(item) {
 		'</div>' +
 	'</div>' +
 	'<div class="text-center">' +
-		'<p class="text-xl font-bold">' + Math.round(tempC) + '</p>' +
-		'<p class="text-xs text-white/50 mt-0.5">' + weatherDescription + '</p>' +
+		'<p class="text-xl font-bold">' + '<span class="tempC">' + Math.round(tempC) + '</span>'  + '°' + '</p>' +
+		'<p class="text-xs text-white/50 mt-0.5 capitalize">' + weatherDescription + '</p>' +
 	'</div>' +
 	'<div class="w-full border-t border-white/10 pt-2 mt-1 space-y-1">' +
 		'<div class="flex items-center justify-between text-xs text-white/50">' +
@@ -283,26 +328,54 @@ function createForecastCard(item) {
 		'</div>' +
 	'</div>'
 
-	// let sunnyDay = document.querySelector('.sunnyDay');
-	// let cloudyDay = document.querySelector('.cloudyDay');
-	// let rainyDay = document.querySelector('.rainyDay');
-	// let thunderDay = document.querySelector('.thunderDay');
-	// let snowDay = document.querySelector('.snowDay');
-
-	// // Icon changes with weather condition
-	// if (item.weather[0].icon === '01d' || data.weather[0].icon === '01n') {
-	// 	sunnyDay.classList.remove('hidden');
-	// } else if (item.weather[0].icon === '02d' || data.weather[0].icon === '02n' || data.weather[0].icon === '03n' || data.weather[0].icon === '03n' || data.weather[0].icon === '04d' || data.weather[0].icon === '04n') {
-	// 	cloudyDay.classList.remove('hidden');
-	// } else if (item.weather[0].icon === '09d' || data.weather[0].icon === '09n' || data.weather[0].icon === '10n' || data.weather[0].icon === '10n') {
-	// 	rainyDay.classList.remove('hidden');
-	// } else if (item.weather[0].icon === '11d' || data.weather[0].icon === '11n') {
-	// 	thunderDay.classList.remove('hidden');
-	// } else {
-	// 	snowDay.classList.remove('hidden');
-	// }
-
 	return card;
+}
+
+function requestGeolocation() {
+	navigator.geolocation.getCurrentPosition(
+		function currentLocation(pos) {
+			fetchWeatherByCoordinates(pos.coords.latitude, pos.coords.longitude);
+		},
+		function faildToLocate(err) {
+			let msg = 'Location access denied';
+			if(err.code === err.POSITION_UNAVAILABLE) {
+				msg = 'Location information is unavailable.'
+			};
+			showError(msg);
+		}
+	);
+}
+
+function fetchWeatherByCoordinates(latitude, longitude) {
+	let weatherUrl  = baseURL + '/weather?lat='  + latitude + '&lon=' + longitude + '&units=metric&appid=' + APIKey;
+  	let forecastUrl = baseURL + '/forecast?lat=' + latitude + '&lon=' + longitude + '&units=metric&appid=' + APIKey;
+	
+	let weatherData;
+
+	fetch(weatherUrl)
+	.then(function (response){
+		if(!response.ok) {
+			return response.json().then((err) => {
+				throw new Error(err.message || 'City not found');
+			});
+		}
+		return response.json();
+	})
+	.then(function (data) {
+		weatherData = data;
+		return fetch(forecastUrl);
+	})
+	.then(function (response) {
+		return response.json();
+	})
+	.then(function (data) {
+		displayCurrentWeather(weatherData);
+		displayForecast(data);
+		// saveRecentSearch(weatherData.name);
+	})
+	.catch(function (err) {
+		showError(err.message || 'Failed to retrieve location weather. Please try again.');
+	})
 }
 
 function init() {
