@@ -37,7 +37,7 @@
         <!-- ===================== SEARCH BOX ===================== -->
         <section class="mb-7.5">
             <div class="container">
-				<div class="p-5 rounded-2xl bg-glass shadow-xs flex flex-col gap-4">
+				<div class="p-5 rounded-2xl bg-glass shadow-xs flex flex-col gap-4 relative z-20">
 					<div class="flex flex-col gap-3 grow md:flex-row items-start">
 						<div class="relative grow">
 							<span class="absolute left-3.25 top-3.25">
@@ -55,34 +55,16 @@
 					<div class="flex flex-col sm:flex-row items-start sm:items-center gap-3 sm:justify-between">
 
 						<!-- Recent Searches Dropdown (hidden when no searches)-->
-						<div id="recentWrapper" class="hidden relative">
-							<button type="button" id="recentSearches" class="flex items-center gap-2 px-4 py-2 rounded-xl bg-glass border border-white/20 hover:bg-white/15 transition text-sm text-white/80 cursor-pointer">
+						<div id="recentWrapper" class="relative">
+							<button type="button" id="recentSearches" class="hidden items-center gap-2 px-4 py-2 rounded-xl bg-glass border border-white/20 hover:bg-white/15 transition text-sm text-white/80 cursor-pointer">
 								<svg xmlns="http://www.w3.org/2000/svg" width="16px" height="16px" viewBox="0 0 24 24" fill="none"><path d="M12 8V12L14.5 14.5" stroke="#1C274C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="stroke-sky-300"/><path d="M7 3.33782C8.47087 2.48697 10.1786 2 12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 10.1786 2.48697 8.47087 3.33782 7" stroke-width="1.5" stroke-linecap="round" class="stroke-sky-300"/></svg>
 								<span>Recent Searches</span>
 								<svg id="recentIcon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" height="14px" width="14px"><path d="M297.4 470.6C309.9 483.1 330.2 483.1 342.7 470.6L534.7 278.6C547.2 266.1 547.2 245.8 534.7 233.3C522.2 220.8 501.9 220.8 489.4 233.3L320 402.7L150.6 233.4C138.1 220.9 117.8 220.9 105.3 233.4C92.8 245.9 92.8 266.2 105.3 278.7L297.3 470.7z" class="fill-white/50"/></svg>
 							</button>
 
 							<!-- Dropdown Panel (hidden by default) -->
-							<div id="recentDropdown" class="hidden absolute top-full left-0 mt-2 w-56 rounded-xl bg-glass border border-white/20 shadow-2xl z-20 overflow-hidden">
-								<ul class="py-1 text-sm">
-									<li class="flex items-center gap-2 px-4 py-2.5 hover:bg-white/10 cursor-pointer transition">
-										<i class="fa-solid fa-map-pin text-sky-300 text-[12px]"></i>
-										<span>New York, US</span>
-									</li>
-									<li class="flex items-center gap-2 px-4 py-2.5 hover:bg-white/10 cursor-pointer transition">
-										<i class="fa-solid fa-map-pin text-sky-300 text-[12px]"></i>
-										<span>London, UK</span>
-									</li>
-									<li class="flex items-center gap-2 px-4 py-2.5 hover:bg-white/10 cursor-pointer transition">
-										<i class="fa-solid fa-map-pin text-sky-300 text-[12px]"></i>
-										<span>Tokyo, JP</span>
-									</li>
-									<li class="flex items-center gap-2 px-4 py-2.5 hover:bg-white/10 cursor-pointer transition">
-										<i class="fa-solid fa-map-pin text-sky-300 text-[12px]"></i>
-										<span>Sydney, AU</span>
-									</li>
-								</ul>
-							</div>
+							<ul id="recentDropdown" class="hidden w-full absolute top-full left-0 mt-2 rounded-xl bg-[#2b3655] border border-white/20 shadow-2xl z-20 overflow-hidden">
+							</ul>
 						</div>
 						
 						<!-- Temperature Unit Toggle -->
@@ -110,7 +92,7 @@
 		<!-- ===================== TODAY'S WEATHER CARD ===================== -->
 		<section class="mb-7.5">
 			<div class="container">
-				<div class="bg-glass rounded-3xl p-6 border border-white/20">
+				<div class="bg-glass rounded-3xl p-6 border border-white/20 relative z-0">
 			
 					<!-- City + Date -->
 					<div class="flex flex-wrap items-start justify-between gap-3 mb-6">
