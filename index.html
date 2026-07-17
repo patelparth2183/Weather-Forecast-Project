@@ -9,7 +9,7 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
     <link rel="stylesheet" href="src/output.css">
 </head>
-<body class="min-h-screen bg-linear-to-br from-slate-900 via-blue-950 to-indigo-900 text-white font-sans antialiased">
+<body class="min-h-screen before:content-[] before:fixed before:z-0 before:inset-0 before:pointer-none before:bg-black/40 bg-cover bg-center bg-no-repeat text-white font-sans antialiased">
 
     <!-- ===================== HEADER ===================== -->
     <header class="bg-glass sticky top-0 z-50 py-3 px-3">
@@ -25,7 +25,7 @@
                     </div>
                 </div>
                 <div>
-                    <p class="hidden sm:block text-gray-400 text-[12px] italic">Your weather companion</p>
+                    <p class="hidden sm:block text-gray-200 text-[12px] italic">Your weather companion</p>
                 </div>
             </div> 
         </div>
@@ -78,8 +78,8 @@
         </section>
 
 		<!-- ===================== WEATHER ALERT ===================== -->
-		<div id="alertBanner" class="hidden container mb-7.5">
-			<div class="flex items-start gap-3 rounded-2xl px-5 py-4 bg-amber-500/25 border border-amber-400/40 shadow-lg">
+		<div id="alertBanner" class="hidden container mb-7.5 relative z-10">
+			<div class="flex items-start gap-3 rounded-2xl px-5 py-4 bg-amber-500/35 border border-amber-400/50 shadow-lg">
 				<i class="fa-solid fa-circle-exclamation w-5 leading-none text-amber-300 shrink-0 mt-0.5"></i>
 				<div class="flex-1 min-w-0">
 					<p class="font-semibold text-amber-200 text-sm">Extreme Heat Alert</p>
@@ -167,7 +167,7 @@
 		<!-- ===================== 5-DAY FORECAST ===================== -->
 		<section class="mb-7.5">
 			<div class="container">
-				<h2 class="text-lg font-bold mb-4 flex items-center gap-2 text-white/90">
+				<h2 class="text-lg font-bold mb-4 flex items-center gap-2 text-white/90 relative z-10">
 					<i class="fa-regular fa-calendar-days text-5 text-sky-400"></i>
 					5-Day Forecast
 				</h2>
@@ -177,16 +177,16 @@
     </main>
 
 	<!-- ===================== FOOTER ===================== -->
-	<footer class="mt-12 border-t border-white/10 px-3.75">
-		<div class="container py-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-white/35">
+	<footer class="mt-12 border-t border-white/10 px-3.75 relative z-10">
+		<div class="container py-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-white/80">
 			<div class="flex items-center gap-2">
 				<div class="w-6 h-6 rounded-lg bg-linear-to-br from-sky-400 to-blue-600 flex items-center justify-center">
 					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-3.5 h-3.5 text-white"><path d="M12 2v2"></path><path d="m4.93 4.93 1.41 1.41"></path><path d="M20 12h2"></path><path d="m19.07 4.93-1.41 1.41"></path><path d="M15.947 12.65a4 4 0 0 0-5.925-4.128"></path><path d="M13 22H7a5 5 0 1 1 4.9-6H13a3 3 0 0 1 0 6Z"></path></svg>
 				</div>
-				<span class="font-semibold text-white/50">Weather Forecast</span>
+				<span class="font-semibold text-white/80">Weather Forecast</span>
 			</div>
 			<p>© 2026 Weather Forecast. All rights reserved.</p>
-			<p class="flex items-center gap-1">Powered by <span class="text-white/50 font-medium ml-1">Weather API</span></p>
+			<p class="flex items-center gap-1">Powered by <span class="text-white/80 font-medium ml-1">Weather API</span></p>
 		</div>
 	</footer>
 

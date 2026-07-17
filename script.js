@@ -3,12 +3,6 @@ const APIKey = '9ecb754eb02dcfe338f6b2a0a123e5ff';
 const baseURL = 'https://api.openweathermap.org/data/2.5';
 const iconURL = 'https://openweathermap.org/img/wn';
 const defaultCity = 'Mumbai';
-const currentAPI = fetch('https://api.openweathermap.org/data/2.5/weather?q=London&appid=9ecb754eb02dcfe338f6b2a0a123e5ff&units=metric').then((response) => response.json());
-const forcastAPI = fetch('https://api.openweathermap.org/data/2.5/forecast?q=London&appid=9ecb754eb02dcfe338f6b2a0a123e5ff&units=metric').then((response) => response.json());
-
-currentAPI.then((data)=>console.log(data));
-forcastAPI.then((data)=>console.log(data));
-
 const localKey = 'recent_searches';
 
 //---------- DOM Selection ----------
@@ -61,7 +55,6 @@ const thunderDay = document.getElementsByClassName('thunderDay');
 const snowDay = document.getElementsByClassName('snowDay');
 
 // ---------- EVENT LISTENERS ----------
-
 searchButton.addEventListener('click', function () {
 	fetchWeatherByCity();
 });
@@ -97,8 +90,6 @@ document.addEventListener('click', function (e) {
 		closeDropdown();
 	}
 });
-
-
 
 // ---------- FETCH WEATHER BY CITY ----------
 function fetchWeatherByCity(addedCity) {
@@ -184,6 +175,8 @@ function displayCurrentWeather(data) {
 	humidity.innerHTML = data.main.humidity + " %";
 	windSpeed.innerHTML = Math.round(data.wind.speed) + " m/s";
 
+	updateBackground(data.weather[0].id);
+
 	// Temperature Alert
 	hideAlert();
 	if (data.main.temp > 40) {
@@ -222,6 +215,27 @@ function displayCurrentWeather(data) {
 		iconRainy.classList.add('hidden');
 		iconThunder.classList.add('hidden');
 		iconSnow.classList.remove('hidden');
+	}
+}
+
+// ---------- UPDATE BACKGROUND ----------
+function updateBackground(id) {
+	const body = document.body;
+
+	if (id >= 200 && id < 300) {
+		body.style = 'background-image: url(images/thunder-storm.jpg);'
+	} else if (id >= 300 && id < 600) {
+		body.style = 'background-image: url(images/rainy-weather.jpg);'
+	} else if (id >= 600 && id < 700) {
+		body.style = 'background-image: url(images/snow-weather.jpg);'
+	} else if (id >= 700 && id < 800) {
+		body.style = 'background-image: url(images/cloudy-weather.jpg);'
+	} else if (id === 800) {
+		body.style = 'background-image: url(images/clear-weather.jpg);'
+	} else if (id > 800) {
+		body.style = 'background-image: url(images/cloudy-weather.jpg);'
+	} else {
+		body.classList.add('bg-linear-to-br from-slate-900 via-blue-950 to-indigo-900');
 	}
 }
 
@@ -302,8 +316,8 @@ function createForecastCard(item) {
 	let card = document.createElement('div');
 	card.className = 'bg-glass rounded-2xl p-3 lg:p-4 flex flex-col items-center gap-2 hover:bg-white/12 hover:-translate-y-1 transition-all duration-200';
 	card.innerHTML = 
-	'<p class="text-xs font-semibold text-white/50 uppercase tracking-wide">' + weekday + '</p>' +
-	'<p class="text-xs text-white/35">' + today + '</p>' +
+	'<p class="text-xs font-semibold text-white/80 uppercase tracking-wide">' + weekday + '</p>' +
+	'<p class="text-xs text-white/80">' + today + '</p>' +
 	'<div class="iconBg w-12 h-12 rounded-xl flex items-center justify-center my-1">' +
 		'<div class="hidden sunnyDay">' +
 			'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-7 h-7 text-amber-300"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2"></path><path d="M12 20v2"></path><path d="m4.93 4.93 1.41 1.41"></path><path d="m17.66 17.66 1.41 1.41"></path><path d="M2 12h2"></path><path d="M20 12h2"></path><path d="m6.34 17.66-1.41 1.41"></path><path d="m19.07 4.93-1.41 1.41"></path></svg>' +
@@ -323,10 +337,10 @@ function createForecastCard(item) {
 	'</div>' +
 	'<div class="text-center">' +
 		'<p class="text-xl font-bold">' + '<span class="tempCard" data-celsius="' + item.main.temp + '">' + displayTemp(item.main.temp) + '</span>'  + '°' + '</p>' +
-		'<p class="text-xs text-white/50 mt-0.5 capitalize">' + weatherDescription + '</p>' +
+		'<p class="text-xs text-white/70 mt-0.5 capitalize">' + weatherDescription + '</p>' +
 	'</div>' +
 	'<div class="w-full border-t border-white/10 pt-2 mt-1 space-y-1">' +
-		'<div class="flex items-center justify-between text-xs text-white/50">' +
+		'<div class="flex items-center justify-between text-xs text-white/70">' +
 			'<span class="flex items-center gap-1">' + '<i class="fa-solid fa-droplet text-[12px] text-sky-400"></i>' + humidity + '%' + '</span>' +
 			'<span class="flex items-center gap-1">' + '<i class="fa-solid fa-wind text-[12px] text-teal-400"></i>' + wind + ' km/h' + '</span>' +
 		'</div>' +
